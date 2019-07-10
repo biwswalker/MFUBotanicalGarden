@@ -1,7 +1,14 @@
-import React, { Component } from 'react'
-import { View, Image, FlatList } from 'react-native'
+import React, { Component, Fragment } from 'react'
+import {
+  View,
+  Text,
+  Image,
+  FlatList,
+  TouchableHighlight,
+} from 'react-native'
 
 import styles from './Search.styles'
+import { Colors } from '../../constants';
 
 const TRANSPARENCY_ICON = require('../../assets/images/icon/transparency.png')
 
@@ -13,8 +20,23 @@ class Search extends Component {
 
   suggestionItemKey = (item, index) => `${item.id}${index}`
 
+  renderSearchResultHeader = () => (
+    <View style={styles.searchResultHeader}>
+      <View style={styles.searchResultHeaderWrapper}>
+        <Text style={styles.searchResultHeaderText}>Result</Text>
+      </View>
+    </View>
+  )
+
   renderSuggestionItem = ({ item }) => (
-    <View><Text>{item.name}</Text></View>
+    <TouchableHighlight
+      onPress={() => { }}
+      style={styles.searchResultItemWrapper}
+      underlayColor={Colors.BLACK_TRANS}>
+      <Fragment>
+        <Text style={styles.searchResultItemText}>{item.name}</Text>
+      </Fragment>
+    </TouchableHighlight>
   )
 
   render() {
@@ -24,9 +46,12 @@ class Search extends Component {
           <Image source={TRANSPARENCY_ICON} style={styles.searchIcon} />
           <View style={styles.searchField}></View>
         </View>
-        <View>
+        <View style={styles.listContainer}>
           <FlatList
+            ListHeaderComponent={this.renderSearchResultHeader}
+            contentContainerStyle={styles.searchListContainer}
             renderItem={this.renderSuggestionItem}
+            showsHorizontalScrollIndicator={false}
             keyExtractor={this.suggestionItemKey}
             data={[
               { id: 1, name: 'biwswalerk' },

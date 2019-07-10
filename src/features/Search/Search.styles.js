@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 import { scale } from '../../utils'
-import { Colors } from '../../constants'
+import { Colors, Fonts } from '../../constants'
 
 const styles = {
   container: {
@@ -23,6 +23,38 @@ const styles = {
   searchField: {
     flex: 1,
   },
+
+  listContainer: {
+    flex: 1,
+  },
+  searchResultHeader: {
+    paddingLeft: scale(16),
+  },
+  searchResultHeaderWrapper: {
+    paddingBottom: scale(5),
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.BLACK_TRANS,
+  },
+  searchResultHeaderText: {
+    fontFamily: Fonts.OpenSansCondensedBold,
+    fontSize: scale(20),
+    lineHeight: scale(24, 'vertical'),
+    color: Colors.BLACK,
+  },
+  searchListContainer: {
+    marginTop: scale(25),
+  },
+  searchResultItemWrapper: {
+    paddingHorizontal: scale(16),
+    paddingVertical: scale(12)
+  },
+  searchResultItemText: {
+    fontFamily: Fonts.OpenSansCondensedLight,
+    fontSize: scale(20),
+    lineHeight: scale(24, 'vertical'),
+    color: Colors.GREEN_DARKNEST,
+    textAlign: 'left'
+  }
 }
 
 export default StyleSheet.create(styles)
