@@ -30,7 +30,7 @@ class Search extends Component {
 
   renderSuggestionItem = ({ item }) => (
     <TouchableHighlight
-      onPress={() => { }}
+      onPress={() => router.push.Information()}
       style={styles.searchResultItemWrapper}
       underlayColor={Colors.BLACK_TRANS}>
       <Fragment>

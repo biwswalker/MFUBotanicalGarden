@@ -1,15 +1,24 @@
 import React from 'react'
+import Router from 'react-native-easy-router'
 
 import {
   Initial,
-  Home,
-  Search,
+  Information,
 } from '../features'
 
 const routes = {
-  Home,
-  Search,
+  Initial,
+  Information,
+}
+
+const animations = {
+  [RouteType.SKEW]: [{ transform: [{ skewX: '90deg' }] }, { transform: [{ skewX: '0deg' }] }, false],
 }
 
 export default () =>
-  <Initial routes={routes} />
+  <Router
+    routes={routes}
+    initialRoute='Initial'
+    animations={animations}
+    disableHardwareBack={false}
+    router={router => (this.router = router)} />

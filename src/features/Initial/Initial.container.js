@@ -6,7 +6,6 @@ import {
   Animated,
 } from 'react-native'
 import _ from 'lodash'
-import PropTypes from 'prop-types'
 import Router from 'react-native-easy-router'
 import SafeAreaView from 'react-native-safe-area-view'
 
@@ -14,17 +13,23 @@ import { RouteType } from '../../constants'
 import { Tabbar } from '../../components'
 import styles from './Initial.styles'
 
+import {
+  Home,
+  Search,
+} from '../index'
+
 const MENU_ICON = require('../../assets/images/hamburger/hamburger.png')
 const HOME_ICON = require('../../assets/images/icon/home.png')
 const LEAF_ICON = require('../../assets/images/icon/leaf.png')
 const QR_ICON = require('../../assets/images/icon/qr-code.png')
 const TRANSPARENCY_ICON = require('../../assets/images/icon/transparency.png')
 
-class Initial extends Component {
+const routes = {
+  Home,
+  Search,
+}
 
-  static propTypes = {
-    routes: PropTypes.object.isRequired,
-  }
+class Initial extends Component {
 
   constructor(props) {
     super(props)
@@ -70,7 +75,6 @@ class Initial extends Component {
 
   render() {
     const { activeScene } = this.state
-    const { routes } = this.props
     const TitleName = this.renderSceneNameComponent
     const animations = {
       [RouteType.SKEW]: [{ transform: [{ skewX: '90deg' }] }, { transform: [{ skewX: '0deg' }] }, false],
