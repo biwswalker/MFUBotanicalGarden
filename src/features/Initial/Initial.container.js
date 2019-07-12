@@ -6,7 +6,7 @@ import {
   Animated,
 } from 'react-native'
 import _ from 'lodash'
-import Router from 'react-native-easy-router'
+import Navigator from 'react-native-easy-router'
 import SafeAreaView from 'react-native-safe-area-view'
 
 import { RouteType } from '../../constants'
@@ -42,8 +42,8 @@ class Initial extends Component {
 
   onPressTab = (scene) => () => {
     this.animatedTitleText(0)
-    this.router.push[scene]()
-    setTimeout(()=> {
+    this.router.push(scene, {}, { animation: 'none' })
+    setTimeout(() => {
       this.setState({ activeScene: scene })
       this.animatedTitleText(1)
     }, 270)
@@ -76,6 +76,7 @@ class Initial extends Component {
   render() {
     const { activeScene } = this.state
     const TitleName = this.renderSceneNameComponent
+
     const animations = {
       [RouteType.SKEW]: [{ transform: [{ skewX: '90deg' }] }, { transform: [{ skewX: '0deg' }] }, false],
     }
@@ -110,12 +111,10 @@ class Initial extends Component {
           </Animated.View>
         </View>
         <View style={styles.contentWrapper}>
-          <Router
-            routes={routes}
-            initialRoute='Home'
-            animations={animations}
-            disableHardwareBack={false}
-            router={router => (this.router = router)} />
+          <Navigator
+            screens={routes}
+            initialStack='Home'
+            navigatorRef={router => (this.router = router)} />
         </View>
         <View style={styles.footerTabbar}>
           <Tabbar activeScene={activeScene} tabs={tabs} callbackOnPress={this.onPressTab} />

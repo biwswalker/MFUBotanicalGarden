@@ -1,5 +1,5 @@
-import React from 'react'
-import Router from 'react-native-easy-router'
+import React, { Component } from 'react'
+import Navigator from 'react-native-easy-router'
 
 import {
   Initial,
@@ -11,14 +11,32 @@ const routes = {
   Information,
 }
 
-const animations = {
-  [RouteType.SKEW]: [{ transform: [{ skewX: '90deg' }] }, { transform: [{ skewX: '0deg' }] }, false],
+let navigatorRef = null
+
+const setNavigator = (ref) => {
+  navigatorRef = ref
 }
 
-export default () =>
-  <Router
-    routes={routes}
-    initialRoute='Initial'
-    animations={animations}
-    disableHardwareBack={false}
-    router={router => (this.router = router)} />
+export const getNavigator = () => navigatorRef
+
+
+class Router extends Component {
+
+  constructor(props) {
+    super(props)
+    this.navigator = null
+  }
+
+  componentDidMount() {
+    setNavigator(this.navigator)
+  }
+
+  render() {
+    return <Navigator
+      screens={routes}
+      initialStack='Initial'
+      navigatorRef={ref => (this.navigator = ref)} />
+  }
+}
+
+export default Router
