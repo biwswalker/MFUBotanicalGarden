@@ -1,7 +1,7 @@
 module.exports = {
   assets: [
     "./src/assets/fonts/OpenSansCondensed",
-    "./src/assets/fonts/Poppins",
-    "./src/assets/fonts/Quicksand"
+    "./src/assets/fonts/Quark",
+    "./src/assets/fonts/Kanit"
   ],
 };

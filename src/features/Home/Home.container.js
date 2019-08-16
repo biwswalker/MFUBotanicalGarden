@@ -13,11 +13,10 @@ const CARD_IMAGE_3 = require('../../assets/images/cards/card-flowers.jpg')
 class HomeContainer extends Component {
 
   static propsTypes = {
-    router: PropTypes.object,
   }
 
   static defaultProps = {
-    router() { },
+    navigator() { },
   }
 
   constructor(props) {
@@ -25,8 +24,8 @@ class HomeContainer extends Component {
   }
 
   navigateScene = () => {
-    const { router } = this.props
-    // router.push.Information({}, RouteType.MODAL)
+    // const { router } = this.props
+    // navigator.push.Information({}, RouteType.MODAL)
   }
 
   render() {

@@ -76,7 +76,7 @@ const MINIMUM_COLLAPSE = -80
 class Information extends Component {
 
   static propTypes = {
-    router: PropTypes.oneOfType([
+    navigator: PropTypes.oneOfType([
       PropTypes.object,
       PropTypes.func,
     ]),
@@ -84,7 +84,7 @@ class Information extends Component {
   }
 
   static defaultProps = {
-    router() { },
+    navigator() { },
     botanicalInfo: mockupData,
   }
 
@@ -154,7 +154,7 @@ class Information extends Component {
    */
 
   onPressClose = () => {
-    this.props.router.pop()
+    this.props.navigator.pop()
   }
 
   onBackgroundLoaded = () => {

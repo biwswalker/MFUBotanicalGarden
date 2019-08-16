@@ -7,6 +7,7 @@ import {
   TouchableHighlight,
 } from 'react-native'
 
+import { getNavigator } from '../../configs/router'
 import styles from './Search.styles'
 import { Colors } from '../../constants';
 
@@ -30,7 +31,7 @@ class Search extends Component {
 
   renderSuggestionItem = ({ item }) => (
     <TouchableHighlight
-      onPress={() => { }}
+      onPress={() => getNavigator().push('Information', {}, { animation: 'bottom' })}
       style={styles.searchResultItemWrapper}
       underlayColor={Colors.BLACK_TRANS}>
       <Fragment>
