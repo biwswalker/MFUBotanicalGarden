@@ -9,8 +9,8 @@ import _ from 'lodash'
 import Navigator from 'react-native-easy-router'
 import SafeAreaView from 'react-native-safe-area-view'
 
-import { RouteType } from '../../constants'
-import { Tabbar } from '../../components'
+import { RouteType } from '@constants'
+import { Tabbar } from '@components'
 import styles from './Initial.styles'
 
 import {
@@ -18,11 +18,11 @@ import {
   Search,
 } from '../index'
 
-const MENU_ICON = require('../../assets/images/hamburger/hamburger.png')
-const HOME_ICON = require('../../assets/images/icon/home.png')
-const LEAF_ICON = require('../../assets/images/icon/leaf.png')
-const QR_ICON = require('../../assets/images/icon/qr-code.png')
-const TRANSPARENCY_ICON = require('../../assets/images/icon/transparency.png')
+const MENU_ICON = require('@images/hamburger/hamburger.png')
+const HOME_ICON = require('@images/icon/home.png')
+const LEAF_ICON = require('@images/icon/leaf.png')
+const QR_ICON = require('@images/icon/qr-code.png')
+const TRANSPARENCY_ICON = require('@images/icon/transparency.png')
 
 const routes = {
   Home,

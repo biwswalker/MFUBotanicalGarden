@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
-import { Fonts, Colors } from '../../constants'
-import { scale } from '../../utils'
+import { Fonts, Colors } from '@constants'
+import { scale } from '@utils'
 
 const styles = {
   container: {

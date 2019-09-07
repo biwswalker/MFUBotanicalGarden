@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux'
 
 import {
-  user
-} from '../redux'
+  user,
+  search,
+} from '@redux'
 
 const reducerList = {
-  user
+  user,
+  search,
 }
 
 export default reducers = storeName =>

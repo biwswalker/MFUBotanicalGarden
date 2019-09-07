@@ -4,7 +4,7 @@ import Navigator from 'react-native-easy-router'
 import {
   Initial,
   Information,
-} from '../features'
+} from '@features'
 
 const routes = {
   Initial,

@@ -15,7 +15,11 @@ const requestInterceptor = (config) => {
   return configMod
 }
 
-const responseInterceptor = response => response
+const responseInterceptor = response => {
+  const data = _.get(response, 'data', undefined)
+  const code = _.get(response, 'status', undefined)
+  return { data, code }
+}
 const errorResponseHandler = (store) => error => {
   const { dispatch } = store
   return Promise.reject(error)
