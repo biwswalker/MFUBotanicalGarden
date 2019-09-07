@@ -6,7 +6,7 @@ import {
   serviceConfig,
   projectConfig,
   router as Router
-} from './src/configs'
+} from '@configs'
 import app from './app.json'
 
 const store = storeConfig(projectConfig.name)

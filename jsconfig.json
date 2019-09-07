@@ -1,0 +1,52 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@src/*": [
+        "src/*"
+      ],
+      "@components": [
+        "./components"
+      ],
+      "@services": [
+        "./services"
+      ],
+      "@services/*": [
+        "./services/*"
+      ],
+      "@configs": [
+        "./configs"
+      ],
+      "@configs/*": [
+        "./configs/*"
+      ],
+      "@constants": [
+        "./constants"
+      ],
+      "@features": [
+        "./features"
+      ],
+      "@redux": [
+        "./redux"
+      ],
+      "@redux/*": [
+        "./redux/*"
+      ],
+      "@utils": [
+        "./utils"
+      ],
+      "@images/*": [
+        "./assets/images/*"
+      ],
+      "@fonts": [
+        "./constants/fonts"
+      ],
+      "@colors": [
+        "./constants/colors"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
