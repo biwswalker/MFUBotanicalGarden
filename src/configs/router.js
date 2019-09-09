@@ -1,15 +1,42 @@
-import React from 'react'
+import React, { Component } from 'react'
+import Navigator from 'react-native-easy-router'
 
 import {
   Initial,
-  Home,
-  Search,
-} from '../features'
+  Information,
+} from '@features'
 
 const routes = {
-  Home,
-  Search,
+  Initial,
+  Information,
 }
 
-export default () =>
-  <Initial routes={routes} />
+let navigatorRef = null
+
+const setNavigator = (ref) => {
+  navigatorRef = ref
+}
+
+export const getNavigator = () => navigatorRef
+
+
+class Router extends Component {
+
+  constructor(props) {
+    super(props)
+    this.navigator = null
+  }
+
+  componentDidMount() {
+    setNavigator(this.navigator)
+  }
+
+  render() {
+    return <Navigator
+      screens={routes}
+      initialStack='Initial'
+      navigatorRef={ref => (this.navigator = ref)} />
+  }
+}
+
+export default Router

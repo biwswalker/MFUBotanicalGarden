@@ -18,21 +18,21 @@ import Carousel from 'react-native-snap-carousel'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 
-import { scale } from '../../utils'
-import { Colors } from '../../constants'
+import { scale } from '@utils'
+import { Colors } from '@constants'
 import styles from './Information.styles'
 import {
   IconButton,
   Comment,
   Rating,
   Tag
-} from '../../components'
+} from '@components'
 
-const LEAF_ICON = require('../../assets/images/icon/leaf.png')
-const MINT_IMAGE = require('../../assets/images/herbs/mint.jpg')
-const LEMON_IMAGE = require('../../assets/images/herbs/lemon.jpg')
-const LETTUCE_IMAGE = require('../../assets/images/herbs/lettuce.jpg')
-const COMMENT_ICON = require('../../assets/images/icon/comment.png')
+const LEAF_ICON = require('@images/icon/leaf.png')
+const MINT_IMAGE = require('@images/herbs/mint.jpg')
+const LEMON_IMAGE = require('@images/herbs/lemon.jpg')
+const LETTUCE_IMAGE = require('@images/herbs/lettuce.jpg')
+const COMMENT_ICON = require('@images/icon/comment.png')
 
 const mockupData = {
   name: 'Mint (มิ้น)',
@@ -76,7 +76,7 @@ const MINIMUM_COLLAPSE = -80
 class Information extends Component {
 
   static propTypes = {
-    router: PropTypes.oneOfType([
+    navigator: PropTypes.oneOfType([
       PropTypes.object,
       PropTypes.func,
     ]),
@@ -84,7 +84,7 @@ class Information extends Component {
   }
 
   static defaultProps = {
-    router() { },
+    navigator() { },
     botanicalInfo: mockupData,
   }
 
@@ -154,7 +154,7 @@ class Information extends Component {
    */
 
   onPressClose = () => {
-    this.props.router.pop()
+    this.props.navigator.pop()
   }
 
   onBackgroundLoaded = () => {

@@ -58,6 +58,18 @@
 		<string>OpenSansCondensed-Bold.ttf</string>
 		<string>OpenSansCondensed-Light.ttf</string>
 		<string>OpenSansCondensed-LightItalic.ttf</string>
+		<string>Quark-Bold.otf</string>
+		<string>Quark-Light.otf</string>
+		<string>Kanit-Black.ttf</string>
+		<string>Kanit-Bold.ttf</string>
+		<string>Kanit-ExtraBold.ttf</string>
+		<string>Kanit-ExtraLight.ttf</string>
+		<string>Kanit-Light.ttf</string>
+		<string>Kanit-Medium.ttf</string>
+		<string>Kanit-Regular.ttf</string>
+		<string>Kanit-RegularItalic.ttf</string>
+		<string>Kanit-SemiBold.ttf</string>
+		<string>Kanit-Thin.ttf</string>
 	</array>
 </dict>
 </plist>

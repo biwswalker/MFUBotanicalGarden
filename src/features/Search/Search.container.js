@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Fragment, useEffect, useReducer } from 'react'
 import {
   View,
   Text,
@@ -6,21 +6,28 @@ import {
   FlatList,
   TouchableHighlight,
 } from 'react-native'
+import { useDispatch, useSelector } from 'react-redux'
+import { getNavigator } from '@configs/router'
+import { Colors, project } from '@constants';
+import { getSearhingPlantList, clearSearchList } from '@redux/searching'
+import styles from './Search.styles';
 
-import styles from './Search.styles'
-import { Colors } from '../../constants';
+const TRANSPARENCY_ICON = require('@images/icon/transparency.png')
 
-const TRANSPARENCY_ICON = require('../../assets/images/icon/transparency.png')
+const Search = () => {
 
-class Search extends Component {
+  const dispatch = useDispatch()
+  const plantList = useSelector(state => state[project.name].search.list)
 
-  constructor(props) {
-    super(props)
-  }
+  useEffect(() => {
+    dispatch(getSearhingPlantList())
 
-  suggestionItemKey = (item, index) => `${item.id}${index}`
+    // return dispatch(clearSearchList())
+  }, [])
 
-  renderSearchResultHeader = () => (
+  const suggestionItemKey = (item, index) => `${item.id}${index}`
+
+  const renderSearchResultHeader = () => (
     <View style={styles.searchResultHeader}>
       <View style={styles.searchResultHeaderWrapper}>
         <Text style={styles.searchResultHeaderText}>Result</Text>
@@ -28,9 +35,9 @@ class Search extends Component {
     </View>
   )
 
-  renderSuggestionItem = ({ item }) => (
+  const renderSuggestionItem = ({ item }) => (
     <TouchableHighlight
-      onPress={() => { }}
+      onPress={() => getNavigator().push('Information', {}, { animation: 'bottom' })}
       style={styles.searchResultItemWrapper}
       underlayColor={Colors.BLACK_TRANS}>
       <Fragment>
@@ -39,28 +46,29 @@ class Search extends Component {
     </TouchableHighlight>
   )
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <View style={styles.searchFieldWarpper}>
-          <Image source={TRANSPARENCY_ICON} style={styles.searchIcon} />
-          <View style={styles.searchField}></View>
-        </View>
-        <View style={styles.listContainer}>
-          <FlatList
-            ListHeaderComponent={this.renderSearchResultHeader}
-            contentContainerStyle={styles.searchListContainer}
-            renderItem={this.renderSuggestionItem}
-            showsHorizontalScrollIndicator={false}
-            keyExtractor={this.suggestionItemKey}
-            data={[
-              { id: 1, name: 'biwswalerk' },
-              { id: 2, name: 'stfu' },
-            ]} />
-        </View>
+  // dispatch(getSearhingPlantList())
+  log('list',plantList)
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.searchFieldWarpper}>
+        <Image source={TRANSPARENCY_ICON} style={styles.searchIcon} />
+        <View style={styles.searchField}></View>
       </View>
-    )
-  }
+      <View style={styles.listContainer}>
+        <FlatList
+          ListHeaderComponent={renderSearchResultHeader}
+          contentContainerStyle={styles.searchListContainer}
+          renderItem={renderSuggestionItem}
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={suggestionItemKey}
+          data={[
+            { id: 1, name: 'biwswalerk' },
+            { id: 2, name: 'stfu' },
+          ]} />
+      </View>
+    </View>
+  )
 }
 
 export default Search

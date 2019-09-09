@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
-import { Fonts, Colors } from '../../constants'
-import { scale } from '../../utils'
+import { Fonts, Colors } from '@constants'
+import { scale } from '@utils'
 
 const styles = {
   container: {
@@ -15,12 +15,12 @@ const styles = {
   },
   leftHeaderWarpper: {
     alignSelf: 'flex-start',
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
   },
   rightHeaderWarpper: {
     flex: 1,
     alignSelf: 'flex-end',
-    justifyContent: 'flex-end'
+    justifyContent: 'center',
   },
   mfuText: {
     fontFamily: Fonts.OpenSansCondensedBold,
@@ -54,7 +54,8 @@ const styles = {
     fontSize: scale(32),
     lineHeight: scale(36, 'vertical'),
     color: Colors.BLACK,
-    textAlign: 'right'
+    textAlign: 'right',
+    marginBottom: scale(10),
   }
 }
 
