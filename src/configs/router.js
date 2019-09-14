@@ -1,13 +1,17 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import Navigator from 'react-native-easy-router'
-
+import { Modal } from '@components'
 import {
+  Home,
+  Search,
   Initial,
+  PlantList,
   Information,
 } from '@features'
 
 const routes = {
   Initial,
+  PlantList,
   Information,
 }
 
@@ -19,6 +23,12 @@ const setNavigator = (ref) => {
 
 export const getNavigator = () => navigatorRef
 
+export const routeChilds = {
+  Initial: {
+    Home,
+    Search,
+  }
+}
 
 class Router extends Component {
 
@@ -32,10 +42,15 @@ class Router extends Component {
   }
 
   render() {
-    return <Navigator
-      screens={routes}
-      initialStack='Initial'
-      navigatorRef={ref => (this.navigator = ref)} />
+    return (
+      <Fragment>
+        <Navigator
+          screens={routes}
+          initialStack='Initial'
+          navigatorRef={ref => (this.navigator = ref)} />
+        <Modal />
+      </Fragment>
+    )
   }
 }
 

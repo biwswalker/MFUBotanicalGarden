@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
-import { Fonts, Colors } from '../../constants'
-import { scale } from '../../utils'
+import { Fonts, Colors } from '@constants'
+import { scale } from '@utils'
 
 const styles = {
     container: {
@@ -10,7 +10,6 @@ const styles = {
         height: scale(400, 'vertical'),
         marginVertical: scale(20, 'vertical'),
         marginHorizontal: scale(20),
-
         shadowColor: "#000",
         shadowOffset: {
             width: scale(0),

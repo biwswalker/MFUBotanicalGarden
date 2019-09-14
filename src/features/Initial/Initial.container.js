@@ -9,25 +9,16 @@ import _ from 'lodash'
 import Navigator from 'react-native-easy-router'
 import SafeAreaView from 'react-native-safe-area-view'
 
-import { RouteType } from '@constants'
-import { Tabbar } from '@components'
+import { RouteType, Colors } from '@constants'
+import { Tabbar, IconButton, ModalController } from '@components'
+import { routeChilds } from '@configs/router'
 import styles from './Initial.styles'
-
-import {
-  Home,
-  Search,
-} from '../index'
 
 const MENU_ICON = require('@images/hamburger/hamburger.png')
 const HOME_ICON = require('@images/icon/home.png')
 const LEAF_ICON = require('@images/icon/leaf.png')
 const QR_ICON = require('@images/icon/qr-code.png')
 const TRANSPARENCY_ICON = require('@images/icon/transparency.png')
-
-const routes = {
-  Home,
-  Search,
-}
 
 class Initial extends Component {
 
@@ -50,6 +41,14 @@ class Initial extends Component {
   }
 
   animatedTitleText = (toValue) => Animated.timing(this.animatedText, { toValue, duration: 270 }).start()
+
+  onPressOpenDrawer = () => {
+    log('onPressOpenDrawer')
+    const drawer = () => (
+      <View style={{ width: 100, height: 400, backgroundColor: 'red' }}></View>
+    )
+    ModalController.show({ child: drawer })
+  }
 
   renderSceneNameComponent = () => {
     const HomeText = () => (
@@ -104,7 +103,11 @@ class Initial extends Component {
         style={styles.container}>
         <View style={styles.headerWarpper}>
           <View style={styles.leftHeaderWarpper}>
-            <Image source={MENU_ICON} style={styles.menuIcon} />
+            <IconButton
+              icon={MENU_ICON}
+              iconSize={32}
+              tintColor={Colors.BLACK}
+              onPress={this.onPressOpenDrawer} />
           </View>
           <Animated.View style={[styles.rightHeaderWarpper, { opacity: opacityTitle, transform: [{ translateX: translateXTitle }] }]}>
             <TitleName />
@@ -112,7 +115,7 @@ class Initial extends Component {
         </View>
         <View style={styles.contentWrapper}>
           <Navigator
-            screens={routes}
+            screens={routeChilds.Initial}
             initialStack='Home'
             navigatorRef={router => (this.router = router)} />
         </View>
