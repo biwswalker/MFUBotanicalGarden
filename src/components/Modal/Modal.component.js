@@ -33,9 +33,14 @@ class Modal extends Component {
     return (
       <RNModal
         isVisible={isVisible}
-        animationIn='slideInLeft'
-        animationOut='slideOutLeft'
-        onModalHide={this.onModalHide}>
+        onModalHide={this.onModalHide}
+        animationIn='fadeIn'
+        animationOut='fadeOut'
+        backdropOpacity={0.4}
+        animationInTiming={200}
+        animationOutTiming={200}
+        style={{ margin: 0 }}
+        backdropTransitionOutTiming={0}>
         <ChildComponent />
       </RNModal>
     )

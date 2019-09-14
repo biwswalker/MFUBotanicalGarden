@@ -10,7 +10,12 @@ import Navigator from 'react-native-easy-router'
 import SafeAreaView from 'react-native-safe-area-view'
 
 import { RouteType, Colors } from '@constants'
-import { Tabbar, IconButton, ModalController } from '@components'
+import {
+  Tabbar,
+  Drawer,
+  IconButton,
+  ModalController
+} from '@components'
 import { routeChilds } from '@configs/router'
 import styles from './Initial.styles'
 
@@ -43,10 +48,7 @@ class Initial extends Component {
   animatedTitleText = (toValue) => Animated.timing(this.animatedText, { toValue, duration: 270 }).start()
 
   onPressOpenDrawer = () => {
-    log('onPressOpenDrawer')
-    const drawer = () => (
-      <View style={{ width: 100, height: 400, backgroundColor: 'red' }}></View>
-    )
+    const drawer = () => <Drawer />
     ModalController.show({ child: drawer })
   }
 
