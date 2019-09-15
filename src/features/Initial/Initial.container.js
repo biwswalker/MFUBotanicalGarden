@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react'
 import {
   Text,
   View,
-  Image,
   Animated,
 } from 'react-native'
 import _ from 'lodash'
@@ -12,10 +11,10 @@ import SafeAreaView from 'react-native-safe-area-view'
 import { RouteType, Colors } from '@constants'
 import {
   Tabbar,
-  Drawer,
   IconButton,
   ModalController
 } from '@components'
+import { Menu } from '@features'
 import { routeChilds } from '@configs/router'
 import styles from './Initial.styles'
 
@@ -48,7 +47,8 @@ class Initial extends Component {
   animatedTitleText = (toValue) => Animated.timing(this.animatedText, { toValue, duration: 270 }).start()
 
   onPressOpenDrawer = () => {
-    const drawer = () => <Drawer />
+    const { activeScene } = this.state
+    const drawer = () => <Menu  activeScene={activeScene} router={this.router}/>
     ModalController.show({ child: drawer })
   }
 
@@ -65,7 +65,7 @@ class Initial extends Component {
     switch (this.state.activeScene) {
       case 'Home':
         return <HomeText />
-      case 'Botanical':
+      case 'Category':
         return <BotanicalText />
       case 'Search':
         return <SearchText />
@@ -84,7 +84,7 @@ class Initial extends Component {
 
     const tabs = [
       { name: 'Home', icon: HOME_ICON },
-      { name: 'Botanical', icon: LEAF_ICON },
+      { name: 'Category', icon: LEAF_ICON },
       { name: 'QRCode', icon: QR_ICON },
       { name: 'Search', icon: TRANSPARENCY_ICON },
     ]

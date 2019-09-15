@@ -3,6 +3,7 @@ const colors = {
     BLACK_TRANS: 'rgba(0,0,0,0.1)',
     BLACK_TRANSPARENT: 'rgba(0,0,0,0.7)',
     BLACK_TRANSPARENT_LIGHTER: 'rgba(0,0,0,0.5)',
+    BLACK_TRANSPARENT_LIGHTNEST: 'rgba(0,0,0,0.3)',
     BLACK: '#000000',
     BLACK_333: '#333333',
     BLACK_666: '#666666',

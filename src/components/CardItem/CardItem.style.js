@@ -4,12 +4,13 @@ import { scale } from '@utils'
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     flexDirection: 'row',
+    paddingVertical: scale(12),
+    paddingHorizontal : scale(16),
   },
   image: {
-    width: scale(40),
-    height: scale(40),
+    width: scale(60),
+    height: scale(60),
     borderRadius: scale(10),
     resizeMode: 'cover'
   },
@@ -18,14 +19,17 @@ const styles = StyleSheet.create({
     paddingLeft: scale(8),
   },
   titleWarpper: {
+    flex: 1,
+    justifyContent: 'center'
   },
   titleText: {
     fontFamily: Fonts.KanitBold,
-    fontSize: scale(24),
+    fontSize: scale(18),
     color: Colors.BLACK_333,
   },
   descriptionWarpper: {
-    
+    justifyContent: 'center',
+    flex: 1,    
   },
 })
 

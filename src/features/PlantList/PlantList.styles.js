@@ -11,14 +11,14 @@ const styles = StyleSheet.create({
     paddingVertical: scale(20),
     paddingHorizontal: scale(10),
 
-    shadowColor: "#000",
+    shadowColor: Colors.BLACK,
     shadowOffset: {
-      width: scale(0),
-      height: scale(12, 'vertical'),
+      width: 0,
+      height: 3,
     },
-    shadowOpacity: 0.58,
-    shadowRadius: 16.00,
-    elevation: 24,
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 6,
   },
   faded: {
     position: 'absolute',
@@ -34,16 +34,20 @@ const styles = StyleSheet.create({
     height: scale(40, 'vertical'),
   },
   titleText: {
+    marginTop: scale(24),
     paddingLeft: scale(10),
     fontFamily: Fonts.OpenSansCondensedBold,
-    fontSize: scale(20),
-    lineHeight: scale(24, 'vertical'),
+    fontSize: scale(26),
+    lineHeight: scale(30, 'vertical'),
     color: Colors.WHITE,
     textAlign: 'left',
   },
   listContainer: {
     flex: 1,
-    paddingHorizontal: scale(16),
+    paddingTop: scale(16),
+  },
+  tags: {
+    flexDirection: 'row',
   }
 })
 

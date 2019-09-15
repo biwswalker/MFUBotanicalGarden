@@ -6,10 +6,11 @@ import {
   ImageBackground
 } from 'react-native'
 import SafeAreaView from 'react-native-safe-area-view'
-import { IconButton, CardItem } from '@components'
+import { IconButton, CardItem, Tag } from '@components'
 import PropTypes from 'prop-types'
 
 import styles from './PlantList.styles'
+import { Colors } from '@constants'
 
 const BACK_ICON = require('@images/icon/left-arrow.png')
 const CARD_IMAGE_1 = require('@images/cards/card-graden.jpg')
@@ -22,12 +23,19 @@ const PlantList = (props) => {
 
   const plantItemKey = (item, index) => `${item.id}${index}`
 
+  const renderTags = (tags, index) => () => {
+    const tagsComponent = tags.map(tag => (<Tag key={`${tag}-${index}`} text={tag} backgroundColor={Colors.BLACK_TRANSPARENT_LIGHTNEST} />))
+    return (
+      <View style={styles.tags}>{tagsComponent}</View>
+    )
+  }
+
   const renderPlantItem = ({ item }) => (
     <CardItem
       title={item.name}
-      description={item.name}
+      description={renderTags(item.tags)}
       image={CARD_IMAGE_1}
-      onPress={() => { }} />
+      onPress={() => props.navigator.push('Information', {}, { animation: 'bottom' })} />
   )
 
   return (
@@ -51,8 +59,8 @@ const PlantList = (props) => {
           renderItem={renderPlantItem}
           keyExtractor={plantItemKey}
           data={[
-            { id: 1, name: 'biwswalerk' },
-            { id: 2, name: 'stfu' },
+            { id: 1, name: 'มิ้น (Mint)', tags: ['Green', 'Herb'] },
+            { id: 2, name: 'มะนาว (Lemon)', tags: ['Herb', 'yellow'] },
           ]} />
       </View>
     </SafeAreaView>

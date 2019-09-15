@@ -8,6 +8,7 @@ import {
 } from 'react-native'
 
 import styles from './CardItem.style'
+import { Colors } from '@constants'
 
 const IMAGE = require('@images/herbs/lemon.jpg')
 
@@ -23,7 +24,10 @@ const CardItem = (props) => {
   const isHaveDescription = typeof description === 'function'
   const Description = isHaveDescription ? description : Fragment
   return (
-    <TouchableHighlight style={styles.container} onPress={onPress}>
+    <TouchableHighlight
+      style={styles.container}
+      onPress={onPress}
+      underlayColor={Colors.BLACK_TRANS}>
       <Fragment>
         <Image source={image} style={styles.image} />
         <View style={styles.contentWarpper}>
