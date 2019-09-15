@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { TouchableHighlight, View, Image } from 'react-native'
 import PropTypes from 'prop-types'
+import { Colors } from '@constants';
 
 import styles from './IconButton.style'
-import { Colors } from '../../constants';
 
 const CLOSE_ICON = require('../../assets/images/icon/close.png')
 
@@ -17,6 +17,7 @@ class IconButton extends Component {
     onPress: PropTypes.func,
     iconSize: PropTypes.number,
     size: PropTypes.number,
+    tintColor: PropTypes.string,
   }
 
   static defaultProps = {
@@ -24,10 +25,12 @@ class IconButton extends Component {
     onPress() { },
     iconSize: 16,
     size: 44,
+    tintColor: Colors.WHITE,
   }
 
   render() {
     const {
+      tintColor,
       iconSize,
       onPress,
       icon,
@@ -47,7 +50,8 @@ class IconButton extends Component {
             source={icon}
             style={[styles.iconImage, {
               width: iconSize,
-              height: iconSize
+              height: iconSize,
+              tintColor: tintColor
             }]} />
         </View>
       </TouchableHighlight>

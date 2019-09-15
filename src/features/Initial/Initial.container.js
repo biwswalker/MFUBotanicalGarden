@@ -2,32 +2,27 @@ import React, { Component, Fragment } from 'react'
 import {
   Text,
   View,
-  Image,
   Animated,
 } from 'react-native'
 import _ from 'lodash'
 import Navigator from 'react-native-easy-router'
 import SafeAreaView from 'react-native-safe-area-view'
 
-import { RouteType } from '@constants'
-import { Tabbar } from '@components'
-import styles from './Initial.styles'
-
+import { RouteType, Colors } from '@constants'
 import {
-  Home,
-  Search,
-} from '../index'
+  Tabbar,
+  IconButton,
+  ModalController
+} from '@components'
+import { Menu } from '@features'
+import { routeChilds } from '@configs/router'
+import styles from './Initial.styles'
 
 const MENU_ICON = require('@images/hamburger/hamburger.png')
 const HOME_ICON = require('@images/icon/home.png')
 const LEAF_ICON = require('@images/icon/leaf.png')
 const QR_ICON = require('@images/icon/qr-code.png')
 const TRANSPARENCY_ICON = require('@images/icon/transparency.png')
-
-const routes = {
-  Home,
-  Search,
-}
 
 class Initial extends Component {
 
@@ -51,6 +46,12 @@ class Initial extends Component {
 
   animatedTitleText = (toValue) => Animated.timing(this.animatedText, { toValue, duration: 270 }).start()
 
+  onPressOpenDrawer = () => {
+    const { activeScene } = this.state
+    const drawer = () => <Menu  activeScene={activeScene} router={this.router}/>
+    ModalController.show({ child: drawer })
+  }
+
   renderSceneNameComponent = () => {
     const HomeText = () => (
       <Fragment>
@@ -58,16 +59,19 @@ class Initial extends Component {
         <Text style={styles.bgText}>Botanical Garden</Text>
       </Fragment>
     )
-    const BotanicalText = () => (<Text style={styles.mfuText}>Botanical</Text>)
+    const CategoryText = () => (<Text style={styles.searchText}>Category</Text>)
+    const QRCodeText = () => (<Text style={styles.searchText}>QRCode</Text>)
     const SearchText = () => (<Text style={styles.searchText}>Search</Text>)
 
     switch (this.state.activeScene) {
       case 'Home':
         return <HomeText />
-      case 'Botanical':
-        return <BotanicalText />
+      case 'Category':
+        return <CategoryText />
       case 'Search':
         return <SearchText />
+      case 'QRCode':
+        return <QRCodeText />
       default:
         return <HomeText />
     }
@@ -83,7 +87,7 @@ class Initial extends Component {
 
     const tabs = [
       { name: 'Home', icon: HOME_ICON },
-      { name: 'Botanical', icon: LEAF_ICON },
+      { name: 'Category', icon: LEAF_ICON },
       { name: 'QRCode', icon: QR_ICON },
       { name: 'Search', icon: TRANSPARENCY_ICON },
     ]
@@ -104,7 +108,11 @@ class Initial extends Component {
         style={styles.container}>
         <View style={styles.headerWarpper}>
           <View style={styles.leftHeaderWarpper}>
-            <Image source={MENU_ICON} style={styles.menuIcon} />
+            <IconButton
+              icon={MENU_ICON}
+              iconSize={32}
+              tintColor={Colors.BLACK}
+              onPress={this.onPressOpenDrawer} />
           </View>
           <Animated.View style={[styles.rightHeaderWarpper, { opacity: opacityTitle, transform: [{ translateX: translateXTitle }] }]}>
             <TitleName />
@@ -112,7 +120,7 @@ class Initial extends Component {
         </View>
         <View style={styles.contentWrapper}>
           <Navigator
-            screens={routes}
+            screens={routeChilds.Initial}
             initialStack='Home'
             navigatorRef={router => (this.router = router)} />
         </View>

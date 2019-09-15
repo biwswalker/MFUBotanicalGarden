@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useReducer } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import {
   View,
   Text,
@@ -16,13 +16,15 @@ const TRANSPARENCY_ICON = require('@images/icon/transparency.png')
 
 const Search = () => {
 
+  const [instate, setState] = useState({ headerText: 'Result' })
+
   const dispatch = useDispatch()
   const plantList = useSelector(state => state[project.name].search.list)
 
   useEffect(() => {
     dispatch(getSearhingPlantList())
 
-    // return dispatch(clearSearchList())
+    return () => dispatch(clearSearchList())
   }, [])
 
   const suggestionItemKey = (item, index) => `${item.id}${index}`
@@ -30,7 +32,7 @@ const Search = () => {
   const renderSearchResultHeader = () => (
     <View style={styles.searchResultHeader}>
       <View style={styles.searchResultHeaderWrapper}>
-        <Text style={styles.searchResultHeaderText}>Result</Text>
+        <Text style={styles.searchResultHeaderText}>{instate.headerText}</Text>
       </View>
     </View>
   )
@@ -46,9 +48,6 @@ const Search = () => {
     </TouchableHighlight>
   )
 
-  // dispatch(getSearhingPlantList())
-  log('list',plantList)
-
   return (
     <View style={styles.container}>
       <View style={styles.searchFieldWarpper}>
@@ -63,8 +62,8 @@ const Search = () => {
           showsHorizontalScrollIndicator={false}
           keyExtractor={suggestionItemKey}
           data={[
-            { id: 1, name: 'biwswalerk' },
-            { id: 2, name: 'stfu' },
+            { id: 1, name: 'lemon' },
+            { id: 2, name: 'weed' },
           ]} />
       </View>
     </View>

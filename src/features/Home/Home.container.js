@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 
 // import { RouteType } from '../../constants'
 import { Card } from '@components'
+import { getNavigator } from '@configs/router'
 import styles from './Home.styles'
 
 const CARD_IMAGE_1 = require('@images/cards/card-graden.jpg')
@@ -24,8 +25,7 @@ class HomeContainer extends Component {
   }
 
   navigateScene = () => {
-    // const { router } = this.props
-    // navigator.push.Information({}, RouteType.MODAL)
+    getNavigator().push('PlantList', {}, { animation: 'right', duration: 160, easing: 'ease-in-out' })
   }
 
   render() {
@@ -41,10 +41,10 @@ class HomeContainer extends Component {
             firstText='Highlight' />
           <Card
             image={CARD_IMAGE_2}
-            firstText='Botanical' />
+            firstText='Spcies' />
           <Card
             image={CARD_IMAGE_3}
-            firstText='Garden' />
+            firstText='Leaves types' />
         </ScrollView>
       </View>
     )
