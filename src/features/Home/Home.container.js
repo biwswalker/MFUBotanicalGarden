@@ -41,10 +41,10 @@ class HomeContainer extends Component {
             firstText='Highlight' />
           <Card
             image={CARD_IMAGE_2}
-            firstText='Botanical' />
+            firstText='Spcies' />
           <Card
             image={CARD_IMAGE_3}
-            firstText='Garden' />
+            firstText='Leaves types' />
         </ScrollView>
       </View>
     )

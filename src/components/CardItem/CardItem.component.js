@@ -18,7 +18,8 @@ const CardItem = (props) => {
     title,
     description,
     image,
-    onPress
+    onPress,
+    imageSize
   } = props
 
   const isHaveDescription = typeof description === 'function'
@@ -29,14 +30,16 @@ const CardItem = (props) => {
       onPress={onPress}
       underlayColor={Colors.BLACK_TRANS}>
       <Fragment>
-        <Image source={image} style={styles.image} />
+        <Image source={image} style={[styles.image, { width: imageSize, height: imageSize }]} />
         <View style={styles.contentWarpper}>
           <View style={styles.titleWarpper}>
             <Text style={styles.titleText}>{title}</Text>
           </View>
-          <View style={styles.descriptionWarpper}>
-            <Description />
-          </View>
+          {isHaveDescription && (
+            <View style={styles.descriptionWarpper}>
+              <Description />
+            </View>
+          )}
         </View>
       </Fragment>
     </TouchableHighlight>
@@ -50,9 +53,11 @@ CardItem.propTypes = {
   description: PropTypes.func,
   image: PropTypes.any,
   onPress: PropTypes.func,
+  imageSize: PropTypes.number,
 }
 
 CardItem.defaultProps = {
+  imageSize: 60,
   title: '',
   image: IMAGE,
   onPress() { },

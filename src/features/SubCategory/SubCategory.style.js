@@ -3,9 +3,14 @@ import { scale } from '@utils'
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    paddingTop: scale(16),
+    flex: 1,
   },
+  subCatWrapper: {
+
+  },
+  subCategoryText: {
+    
+  }
 })
 
 export default styles

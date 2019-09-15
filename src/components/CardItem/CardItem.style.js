@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   },
   contentWarpper: {
     flex: 1,
-    paddingLeft: scale(8),
+    paddingLeft: scale(16),
   },
   titleWarpper: {
     flex: 1,

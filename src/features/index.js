@@ -5,6 +5,7 @@ import { Search } from './Search'
 import { Initial } from './Initial'
 import { Category } from './Category'
 import { PlantList } from './PlantList'
+import { SubCategory } from './SubCategory'
 import { Information } from './Information'
 
 export {
@@ -15,5 +16,6 @@ export {
   Initial,
   Category,
   PlantList,
-  Information
+  SubCategory,
+  Information,
 }
