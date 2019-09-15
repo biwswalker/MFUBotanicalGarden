@@ -4,7 +4,9 @@ import { Modal } from '@components'
 import {
   Home,
   Search,
+  QRCode,
   Initial,
+  Category,
   PlantList,
   Information,
 } from '@features'
@@ -27,6 +29,8 @@ export const routeChilds = {
   Initial: {
     Home,
     Search,
+    QRCode,
+    Category,
   }
 }
 

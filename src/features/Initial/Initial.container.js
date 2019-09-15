@@ -59,16 +59,19 @@ class Initial extends Component {
         <Text style={styles.bgText}>Botanical Garden</Text>
       </Fragment>
     )
-    const BotanicalText = () => (<Text style={styles.mfuText}>Botanical</Text>)
+    const CategoryText = () => (<Text style={styles.searchText}>Category</Text>)
+    const QRCodeText = () => (<Text style={styles.searchText}>QRCode</Text>)
     const SearchText = () => (<Text style={styles.searchText}>Search</Text>)
 
     switch (this.state.activeScene) {
       case 'Home':
         return <HomeText />
       case 'Category':
-        return <BotanicalText />
+        return <CategoryText />
       case 'Search':
         return <SearchText />
+      case 'QRCode':
+        return <QRCodeText />
       default:
         return <HomeText />
     }
