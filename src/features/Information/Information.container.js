@@ -29,38 +29,7 @@ import {
 } from '@components'
 
 const LEAF_ICON = require('@images/icon/leaf.png')
-const MINT_IMAGE = require('@images/herbs/mint.jpg')
-const LEMON_IMAGE = require('@images/herbs/lemon.jpg')
-const LETTUCE_IMAGE = require('@images/herbs/lettuce.jpg')
 const COMMENT_ICON = require('@images/icon/comment.png')
-
-const mockupData = {
-  name: 'Mint (มิ้น)',
-  tags: ['Yellow', 'Summer'],
-  images: [
-    MINT_IMAGE,
-    LEMON_IMAGE,
-    LETTUCE_IMAGE
-  ],
-  comments: [
-    {
-      rating: 4,
-      name: 'Boris',
-      comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
-    },
-    {
-      rating: 1,
-      name: 'Oatmeal',
-      comment: 'Lorem Ipsum has been the industrys standard dummy text ever since the 1500s'
-    },
-    {
-      rating: 3,
-      name: 'Oatmeal',
-      comment: 'Lorem Ipsum has been the industrys standard dummy text ever since the 1500s'
-    },
-  ],
-  info: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum'
-}
 
 const SHOWING_CONTENTS = {
   INFO: 'info',
@@ -80,12 +49,12 @@ class Information extends Component {
       PropTypes.object,
       PropTypes.func,
     ]),
-    botanicalInfo: PropTypes.object,
+    plant: PropTypes.object,
   }
 
   static defaultProps = {
     navigator() { },
-    botanicalInfo: mockupData,
+    plant: {},
   }
 
   constructor(props) {
@@ -192,8 +161,8 @@ class Information extends Component {
       name={name} />
 
   renderTags = () => {
-    const { botanicalInfo } = this.props
-    const { tags } = botanicalInfo
+    const { plant } = this.props
+    const { tags } = plant
 
     return tags.map((tag, index) => <Tag key={`${tag}-${index}`} text={tag} />)
   }
@@ -241,8 +210,8 @@ class Information extends Component {
   renderContentData = () => {
     const screenWidth = Dimensions.get('screen').width
     const contentWidth = (screenWidth - ((scale(25) * 2) + (scale(30) * 2)))
-    const { botanicalInfo } = this.props
-    const { info, comments } = botanicalInfo
+    const { plant } = this.props
+    const { details, comments } = plant
 
     const translateYInfo = this.animatedContentTaggle.interpolate({
       inputRange: [0, 1],
@@ -270,7 +239,7 @@ class Information extends Component {
           <ScrollView
             style={styles.infoWarpper}
             showsVerticalScrollIndicator={false} >
-            <Text style={styles.infoText} >{info}</Text>
+            <Text style={styles.infoText} >{details}</Text>
           </ScrollView>
         </Animated.View>
         <Animated.View style={{ opacity: opacityComment, transform: [{ translateX: translateYComment }] }}>
@@ -289,8 +258,8 @@ class Information extends Component {
     const ContentButton = this.renderContentButton
     const ContentData = this.renderContentData
     const { imageHasLoaded } = this.state
-    const { botanicalInfo } = this.props
-    const { name } = botanicalInfo
+    const { plant } = this.props
+    const { name } = plant
     const Tags = this.renderTags
 
     const minMarginTop = scale(120)
@@ -348,9 +317,10 @@ class Information extends Component {
 
   renderImagesBackground = () => {
     const screenWidth = Dimensions.get('screen').width
-    const { botanicalInfo } = this.props
-    const { images } = botanicalInfo
+    const { plant } = this.props
+    const { images } = plant
 
+    const imageUris = images.map(im => ({ uri: im }))
     const renderImages = (image) =>
       <ImageBackground
         onLoadEnd={this.onBackgroundLoaded}
@@ -370,7 +340,7 @@ class Information extends Component {
       <View style={styles.imageBackgroundWarpper}>
         <Carousel
           ref={this.imagesRef}
-          data={images}
+          data={imageUris}
           renderItem={renderImages}
           sliderWidth={screenWidth}
           itemWidth={screenWidth} />

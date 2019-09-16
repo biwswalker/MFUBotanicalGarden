@@ -12,7 +12,8 @@ const styles = StyleSheet.create({
     width: scale(60),
     height: scale(60),
     borderRadius: scale(10),
-    resizeMode: 'cover'
+    resizeMode: 'cover',
+    backgroundColor: Colors.GRAY_EA,
   },
   contentWarpper: {
     flex: 1,
