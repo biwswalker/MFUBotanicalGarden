@@ -15,18 +15,21 @@ import LinearGradient from 'react-native-linear-gradient'
 import { BlurView } from '@react-native-community/blur'
 import SafeAreaView from 'react-native-safe-area-view'
 import Carousel from 'react-native-snap-carousel'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 
+import { project } from '@constants'
 import { scale } from '@utils'
 import { Colors } from '@constants'
-import styles from './Information.styles'
+import { getPlantInfo, clearPlant } from '@redux/plant'
 import {
   IconButton,
   Comment,
   Rating,
   Tag
 } from '@components'
+import styles from './Information.styles'
 
 const LEAF_ICON = require('@images/icon/leaf.png')
 const COMMENT_ICON = require('@images/icon/comment.png')
@@ -49,11 +52,15 @@ class Information extends Component {
       PropTypes.object,
       PropTypes.func,
     ]),
+    clearupData: PropTypes.func,
+    getPlant: PropTypes.func,
     plant: PropTypes.object,
   }
 
   static defaultProps = {
+    clearupData() { },
     navigator() { },
+    getPlant() { },
     plant: {},
   }
 
@@ -75,6 +82,14 @@ class Information extends Component {
     this.isExpanded = false
   }
 
+  componentDidMount() {
+    const { plant, getPlant } = this.props
+    getPlant(plant._id)
+  }
+
+  componentWillUnmount() {
+    this.props.clearupData()
+  }
   /**
    * Start PanResponder Handle
    */
@@ -369,4 +384,13 @@ class Information extends Component {
   }
 }
 
-export default Information
+const mapStateToProps = state => ({
+  plant: state[project.name].plant.data
+})
+
+const mapDispatchToProp = {
+  getPlant: getPlantInfo,
+  clearupData: clearPlant,
+}
+
+export default connect(mapStateToProps, mapDispatchToProp)(Information)

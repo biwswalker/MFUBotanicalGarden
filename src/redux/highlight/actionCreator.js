@@ -11,7 +11,7 @@ const successGetHighlightList = ({ data, code }) => ({
   code
 })
 
-const failureGetHighlightList = (error, code) => ({
+const failureGetHighlightList = ({error, code}) => ({
   type: actionTypeConst.getHighlight.FAILURE,
   error,
   code,
@@ -25,7 +25,7 @@ export const getHighlightList = () => dispatch => {
   dispatch(requestGetHighlightList())
   fetchHighlightList()
     .then(response => dispatch(successGetHighlightList(response)))
-    .catch(error => dispatch(failureGetHighlightList(error, 500)))
+    .catch(error => dispatch(failureGetHighlightList(error)))
 }
 
 export const clearHighlight = () => dispatch => dispatch(clearHighlightList())
