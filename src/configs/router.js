@@ -2,9 +2,12 @@ import React, { Component, Fragment } from 'react'
 import Navigator from 'react-native-easy-router'
 import { Modal } from '@components'
 import {
+  Map,
   Home,
+  About,
   Search,
   QRCode,
+  Contact,
   Initial,
   Category,
   PlantList,
@@ -12,6 +15,9 @@ import {
 } from '@features'
 
 const routes = {
+  Map,
+  About,
+  Contact,
   Initial,
   PlantList,
   Information,
