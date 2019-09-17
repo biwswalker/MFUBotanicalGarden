@@ -16,7 +16,7 @@ const TRANSPARENCY_ICON = require('@images/icon/transparency.png')
 
 const Search = () => {
 
-  const [instate, setState] = useState({ headerText: 'Result' })
+  const [instate, setState] = useState({ headerText: 'Recent' })
 
   const dispatch = useDispatch()
   const plantList = useSelector(state => state[project.name].search.list)

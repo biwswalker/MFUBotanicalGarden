@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import { actionTypeConst } from './constants'
 import { fetchPlantInfomation } from './service'
 
@@ -11,7 +12,7 @@ const successGetPlantInfo = ({ data, code }) => ({
   code
 })
 
-const failureGetPlantInfo = ({error, code}) => ({
+const failureGetPlantInfo = ({ error, code }) => ({
   type: actionTypeConst.getPlantInfo.FAILURE,
   error,
   code,
@@ -23,6 +24,7 @@ const clearupPlant = () => ({
 
 export const getPlantInfo = (_id) => dispatch => {
   dispatch(requestGetPlantInfo())
+  if (_.isEmpty(_id)) { return dispatch(failureGetPlantInfo({ error: 'undefined param', code: 400 })) }
   fetchPlantInfomation(_id)
     .then(response => dispatch(successGetPlantInfo(response)))
     .catch(error => dispatch(failureGetPlantInfo(error)))

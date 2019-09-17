@@ -37,7 +37,7 @@ class Rating extends Component {
       size,
     } = this.props
     const ratingSize = [...new Array(maxRating)]
-    const iconSize = size === 'small' ? scale(8) : scale(14)
+    const iconSize = size === 'small' ? scale(12) : scale(14)
     return ratingSize.map((_, index) => {
       return (
         <Image
@@ -51,7 +51,7 @@ class Rating extends Component {
   render() {
     const { maxRating, rating, size } = this.props
     const Stars = this.renderStar
-    const textSize = size === 'small' ? scale(8) : scale(14)
+    const textSize = size === 'small' ? scale(12) : scale(14)
     const containerPaddingVertical = size === 'small' ? scale(0) : scale(5)
     const containerWidth = (maxRating * textSize) + ((maxRating - 1) * 4)
     return (

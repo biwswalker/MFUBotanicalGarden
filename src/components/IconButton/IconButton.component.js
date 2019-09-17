@@ -18,6 +18,7 @@ class IconButton extends Component {
     iconSize: PropTypes.number,
     size: PropTypes.number,
     tintColor: PropTypes.string,
+    opacity: PropTypes.number,
   }
 
   static defaultProps = {
@@ -26,6 +27,7 @@ class IconButton extends Component {
     iconSize: 16,
     size: 44,
     tintColor: Colors.WHITE,
+    opacity: 1,
   }
 
   render() {
@@ -33,6 +35,7 @@ class IconButton extends Component {
       tintColor,
       iconSize,
       onPress,
+      opacity,
       icon,
       size,
     } = this.props
@@ -51,7 +54,8 @@ class IconButton extends Component {
             style={[styles.iconImage, {
               width: iconSize,
               height: iconSize,
-              tintColor: tintColor
+              tintColor,
+              opacity,
             }]} />
         </View>
       </TouchableHighlight>

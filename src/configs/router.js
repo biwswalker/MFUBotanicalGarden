@@ -12,6 +12,7 @@ import {
   Category,
   PlantList,
   Information,
+  SubCategory,
 } from '@features'
 
 const routes = {
@@ -21,6 +22,7 @@ const routes = {
   Initial,
   PlantList,
   Information,
+  SubCategory,
 }
 
 let navigatorRef = null

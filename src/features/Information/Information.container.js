@@ -2,6 +2,7 @@ import React, { Component, createRef, Fragment } from 'react'
 import {
   View,
   Text,
+  Image,
   FlatList,
   Animated,
   StatusBar,
@@ -19,9 +20,8 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 
-import { project } from '@constants'
 import { scale } from '@utils'
-import { Colors } from '@constants'
+import { Colors, project } from '@constants'
 import { getPlantInfo, clearPlant } from '@redux/plant'
 import {
   IconButton,
@@ -33,6 +33,8 @@ import styles from './Information.styles'
 
 const LEAF_ICON = require('@images/icon/leaf.png')
 const COMMENT_ICON = require('@images/icon/comment.png')
+const NEXT_ICON = require('@images/icon/next.png')
+const PREVIOUS_ICON = require('@images/icon/previous.png')
 
 const SHOWING_CONTENTS = {
   INFO: 'info',
@@ -55,6 +57,7 @@ class Information extends Component {
     clearupData: PropTypes.func,
     getPlant: PropTypes.func,
     plant: PropTypes.object,
+    plantId: PropTypes.string,
   }
 
   static defaultProps = {
@@ -62,6 +65,7 @@ class Information extends Component {
     navigator() { },
     getPlant() { },
     plant: {},
+    plantId: '',
   }
 
   constructor(props) {
@@ -83,8 +87,12 @@ class Information extends Component {
   }
 
   componentDidMount() {
-    const { plant, getPlant } = this.props
-    getPlant(plant._id)
+    const { plantId, getPlant } = this.props
+    getPlant(plantId)
+  }
+
+  componentDidUpdate() {
+    log(this.props.plant)
   }
 
   componentWillUnmount() {
@@ -206,13 +214,15 @@ class Information extends Component {
 
     return (
       <View style={styles.contentButtonWarper}>
-        <Animated.View style={{ opacity: opacityComment, transform: [{ translateY: translateYComment }] }}>
+        <Animated.View style={[styles.buttonWrapper, { opacity: opacityComment, transform: [{ translateY: translateYComment }] }]}>
+          <Text style={styles.textButtonIndicator}>Comments</Text>
           <IconButton
             icon={COMMENT_ICON}
             iconSize={32}
             onPress={this.onToggleContent(SHOWING_CONTENTS.INFO, 1)} />
         </Animated.View>
-        <Animated.View style={{ opacity: opacityInfo, transform: [{ translateY: translateYInfo }] }}>
+        <Animated.View style={[styles.buttonWrapper, { opacity: opacityInfo, transform: [{ translateY: translateYInfo }] }]}>
+          <Text style={styles.textButtonIndicator}>Information</Text>
           <IconButton
             icon={LEAF_ICON}
             iconSize={32}
@@ -226,7 +236,7 @@ class Information extends Component {
     const screenWidth = Dimensions.get('screen').width
     const contentWidth = (screenWidth - ((scale(25) * 2) + (scale(30) * 2)))
     const { plant } = this.props
-    const { details, comments } = plant
+    const { detail, comments } = plant
 
     const translateYInfo = this.animatedContentTaggle.interpolate({
       inputRange: [0, 1],
@@ -254,7 +264,7 @@ class Information extends Component {
           <ScrollView
             style={styles.infoWarpper}
             showsVerticalScrollIndicator={false} >
-            <Text style={styles.infoText} >{details}</Text>
+            <Text style={styles.infoText} >{detail}</Text>
           </ScrollView>
         </Animated.View>
         <Animated.View style={{ opacity: opacityComment, transform: [{ translateX: translateYComment }] }}>
@@ -274,7 +284,8 @@ class Information extends Component {
     const ContentData = this.renderContentData
     const { imageHasLoaded } = this.state
     const { plant } = this.props
-    const { name } = plant
+    const name = _.get(plant, 'name', '')
+    const rating = _.get(plant, 'rating', 0)
     const Tags = this.renderTags
 
     const minMarginTop = scale(120)
@@ -319,7 +330,7 @@ class Information extends Component {
             <ContentButton />
           </View>
           <View style={styles.ratingWarpper}>
-            <Rating rating={3} />
+            <Rating rating={rating} />
           </View>
           <View style={styles.tagsWarpper}>
             <Tags />
@@ -333,7 +344,7 @@ class Information extends Component {
   renderImagesBackground = () => {
     const screenWidth = Dimensions.get('screen').width
     const { plant } = this.props
-    const { images } = plant
+    const images = _.get(plant, 'images', [])
 
     const imageUris = images.map(im => ({ uri: im }))
     const renderImages = (image) =>
@@ -363,6 +374,18 @@ class Information extends Component {
     )
   }
 
+  onNextImage = () => {
+    if (!_.isEmpty(this.imagesRef)) {
+      this.imagesRef.current.snapToNext()
+    }
+  }
+
+  onPrevImage = () => {
+    if (!_.isEmpty(this.imagesRef)) {
+      this.imagesRef.current.snapToPrev()
+    }
+  }
+
   render() {
     const Content = this.renderContent
     const ImagesBackground = this.renderImagesBackground
@@ -373,6 +396,20 @@ class Information extends Component {
         <StatusBar barStyle='light-content' />
         <View style={styles.backgroundContainer} ref={this.viewBlur}>
           <ImagesBackground />
+          <View style={styles.imageIndicatorWrapper} pointerEvents="box-none">
+            <View style={styles.imageDirectionIndicatorWrapper}>
+              <IconButton
+                icon={PREVIOUS_ICON}
+                iconSize={20}
+                opacity={0.3}
+                onPress={this.onPrevImage} />
+              <IconButton
+                icon={NEXT_ICON}
+                iconSize={20}
+                opacity={0.3}
+                onPress={this.onNextImage} />
+            </View>
+          </View>
           <View style={styles.emptyBackground} />
         </View>
         <View style={styles.navbarContainer}>

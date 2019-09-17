@@ -6,9 +6,9 @@ import {
   Text,
   TouchableHighlight
 } from 'react-native'
-
-import styles from './CardItem.style'
+import _ from 'lodash'
 import { Colors } from '@constants'
+import styles from './CardItem.style'
 
 const IMAGE = require('@images/herbs/lemon.jpg')
 
@@ -19,14 +19,18 @@ const CardItem = (props) => {
     description,
     image,
     onPress,
-    imageSize
+    imageSize,
+    rightIcon,
+    containerStyle,
   } = props
 
   const isHaveDescription = typeof description === 'function'
   const Description = isHaveDescription ? description : Fragment
+
+  const isHaveRightIcon = typeof rightIcon === 'number'
   return (
     <TouchableHighlight
-      style={styles.container}
+      style={[styles.container, containerStyle]}
       onPress={onPress}
       underlayColor={Colors.BLACK_TRANS}>
       <Fragment>
@@ -41,6 +45,7 @@ const CardItem = (props) => {
             </View>
           )}
         </View>
+        {isHaveRightIcon && <Image source={rightIcon} style={styles.rightIcon} />}
       </Fragment>
     </TouchableHighlight>
   )
@@ -54,6 +59,8 @@ CardItem.propTypes = {
   image: PropTypes.any,
   onPress: PropTypes.func,
   imageSize: PropTypes.number,
+  rightIcon: PropTypes.number,
+  containerStyle: PropTypes.object,
 }
 
 CardItem.defaultProps = {
@@ -61,4 +68,5 @@ CardItem.defaultProps = {
   title: '',
   image: IMAGE,
   onPress() { },
+  containerStyle: {},
 }

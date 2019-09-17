@@ -70,7 +70,7 @@ const styles = {
   },
   tagsWarpper: {
     flexDirection: 'row',
-    marginTop: scale(8),
+    marginTop: scale(0),
   },
   infoWarpper: {
     marginTop: scale(16, 'vertical'),
@@ -92,11 +92,12 @@ const styles = {
   },
   panIndicatorWarpper: {
     zIndex: 999,
+    paddingVertical: scale(10),
     position: 'absolute',
     alignItems: 'center',
     right: 0,
     left: 0,
-    top: 10,
+    top: 0,
   },
   panIndicator: {
     zIndex: 999,
@@ -108,7 +109,31 @@ const styles = {
   },
   imageBackgroundWarpper: {
     flex: 4,
-  }
+  },
+  textButtonIndicator: {
+    position: 'absolute',
+    fontFamily: Fonts.QuarkLight,
+    fontSize: scale(12),
+    color: Colors.WHITE,
+    textAlign: 'justify',
+    bottom: -10
+  },
+  buttonWrapper: {
+    width: scale(55),
+    alignItems: 'center'
+  },
+  imageIndicatorWrapper: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    justifyContent: 'center',
+  },
+  imageDirectionIndicatorWrapper: {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+  },
 }
 
 export default StyleSheet.create(styles)
