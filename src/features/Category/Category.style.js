@@ -3,8 +3,10 @@ import { scale } from '@utils'
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
     paddingTop: scale(16),
+  },
+  card: {
+    paddingHorizontal: scale(32)
   },
 })
 

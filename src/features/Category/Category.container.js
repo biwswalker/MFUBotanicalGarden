@@ -1,16 +1,24 @@
 import React, { } from 'react'
-import { View, FlatList } from 'react-native'
+import { FlatList } from 'react-native'
 import { CardItem } from '@components'
+import { getNavigator } from '@configs/router'
 
 import styles from './Category.style'
 import Colors from '@colors'
 
-const HIGHLIGHT_ICON = require('@images/icon/highlight.png')
 const SPECIES_ICON = require('@images/icon/species.png')
 const LEAVES_ICON = require('@images/icon/leaves.png')
 const FLOWER_ICON = require('@images/icon/flower.png')
 const FRUITS_ICON = require('@images/icon/fruits.png')
+
 const Category = () => {
+
+  const category = [
+    { name: 'พันธุ์ไม้ตามชื่อวงศ์', category: 'species', image: SPECIES_ICON },
+    { name: 'ลักษณะใบ', category: 'leaves_types', image: LEAVES_ICON },
+    { name: 'ลักษณะดอก', category: 'flower_characteristics', image: FLOWER_ICON },
+    { name: 'ลักษณะผล', category: 'classification_of_fruits', image: FRUITS_ICON },
+  ]
 
   const categoryItemKey = (item, index) => `${item.name}${index}`
 
@@ -20,8 +28,8 @@ const Category = () => {
       image={item.image}
       imageSize={30}
       tintColor={Colors.GREEN_DARKNEST}
-      onPress={() => {}} />
-      // props.navigator.push('Information', {}, { animation: 'bottom' })
+      containerStyle={styles.card}
+      onPress={() => getNavigator().push('SubCategory', { category: item }, { animation: 'right' })} />
   )
 
   return (
@@ -30,12 +38,7 @@ const Category = () => {
       showsHorizontalScrollIndicator={false}
       renderItem={renderCategory}
       keyExtractor={categoryItemKey}
-      data={[
-        { name: 'Species', image: SPECIES_ICON },
-        { name: 'Leaves types', image: LEAVES_ICON },
-        { name: 'Flower characteristics', image: FLOWER_ICON },
-        { name: 'Classification of Fruits', image: FRUITS_ICON },
-      ]} />
+      data={category} />
   )
 }
 

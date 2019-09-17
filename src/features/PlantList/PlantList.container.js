@@ -1,21 +1,36 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   View,
   Text,
   FlatList,
-  ImageBackground
+  ImageBackground,
 } from 'react-native'
+import _ from 'lodash'
+import { useDispatch, useSelector } from 'react-redux'
 import SafeAreaView from 'react-native-safe-area-view'
 import { IconButton, CardItem, Tag } from '@components'
 import PropTypes from 'prop-types'
-
+import { getHighlightList, clearHighlight } from '@redux/highlight'
 import styles from './PlantList.styles'
-import { Colors } from '@constants'
+import { Colors, project } from '@constants'
 
 const BACK_ICON = require('@images/icon/left-arrow.png')
 const CARD_IMAGE_1 = require('@images/cards/card-graden.jpg')
+const EYE_ICON = require('@images/icon/eye.png')
 
 const PlantList = (props) => {
+
+  const dispatch = useDispatch()
+  const plantList = useSelector(state => state[project.name].highlight.list)
+
+  useEffect(() => {
+    dispatch(getHighlightList())
+    return () => dispatch(clearHighlight())
+  }, [])
+
+  useEffect(() => {
+    log('updated', plantList)
+  });
 
   onPressBack = () => {
     props.navigator.pop()
@@ -23,20 +38,27 @@ const PlantList = (props) => {
 
   const plantItemKey = (item, index) => `${item.id}${index}`
 
-  const renderTags = (tags, index) => () => {
-    const tagsComponent = tags.map(tag => (<Tag key={`${tag}-${index}`} text={tag} backgroundColor={Colors.BLACK_TRANSPARENT_LIGHTNEST} />))
+  const renderTags = (tags) => () => {
+    const tagsComponent = tags.map((tag, index) => (<Tag key={`${tag}-${index}`} text={tag} backgroundColor={Colors.BLACK_TRANSPARENT_LIGHTNEST} />))
     return (
       <View style={styles.tags}>{tagsComponent}</View>
     )
   }
 
-  const renderPlantItem = ({ item }) => (
-    <CardItem
-      title={item.name}
-      description={renderTags(item.tags)}
-      image={CARD_IMAGE_1}
-      onPress={() => props.navigator.push('Information', {}, { animation: 'bottom' })} />
-  )
+  const renderPlantItem = ({ item }) => {
+    const rawImage = _.head(_.get(item, 'images', []))
+    const image = _.isEmpty(rawImage)
+      ? CARD_IMAGE_1
+      : { uri: rawImage }
+    return (
+      <CardItem
+        title={item.name}
+        description={renderTags(item.tags)}
+        image={image}
+        rightIcon={EYE_ICON}
+        onPress={() => props.navigator.push('Information', { plantId: item._id }, { animation: 'bottom' })} />
+    )
+  }
 
   return (
     <SafeAreaView
@@ -58,10 +80,7 @@ const PlantList = (props) => {
           showsHorizontalScrollIndicator={false}
           renderItem={renderPlantItem}
           keyExtractor={plantItemKey}
-          data={[
-            { id: 1, name: 'มิ้น (Mint)', tags: ['Green', 'Herb'] },
-            { id: 2, name: 'มะนาว (Lemon)', tags: ['Herb', 'yellow'] },
-          ]} />
+          data={plantList} />
       </View>
     </SafeAreaView>
   )

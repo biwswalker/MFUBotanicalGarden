@@ -2,6 +2,7 @@ import React, { Component, createRef, Fragment } from 'react'
 import {
   View,
   Text,
+  Image,
   FlatList,
   Animated,
   StatusBar,
@@ -15,52 +16,25 @@ import LinearGradient from 'react-native-linear-gradient'
 import { BlurView } from '@react-native-community/blur'
 import SafeAreaView from 'react-native-safe-area-view'
 import Carousel from 'react-native-snap-carousel'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 
 import { scale } from '@utils'
-import { Colors } from '@constants'
-import styles from './Information.styles'
+import { Colors, project } from '@constants'
+import { getPlantInfo, clearPlant } from '@redux/plant'
 import {
   IconButton,
   Comment,
   Rating,
   Tag
 } from '@components'
+import styles from './Information.styles'
 
 const LEAF_ICON = require('@images/icon/leaf.png')
-const MINT_IMAGE = require('@images/herbs/mint.jpg')
-const LEMON_IMAGE = require('@images/herbs/lemon.jpg')
-const LETTUCE_IMAGE = require('@images/herbs/lettuce.jpg')
 const COMMENT_ICON = require('@images/icon/comment.png')
-
-const mockupData = {
-  name: 'Mint (มิ้น)',
-  tags: ['Yellow', 'Summer'],
-  images: [
-    MINT_IMAGE,
-    LEMON_IMAGE,
-    LETTUCE_IMAGE
-  ],
-  comments: [
-    {
-      rating: 4,
-      name: 'Boris',
-      comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
-    },
-    {
-      rating: 1,
-      name: 'Oatmeal',
-      comment: 'Lorem Ipsum has been the industrys standard dummy text ever since the 1500s'
-    },
-    {
-      rating: 3,
-      name: 'Oatmeal',
-      comment: 'Lorem Ipsum has been the industrys standard dummy text ever since the 1500s'
-    },
-  ],
-  info: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum'
-}
+const NEXT_ICON = require('@images/icon/next.png')
+const PREVIOUS_ICON = require('@images/icon/previous.png')
 
 const SHOWING_CONTENTS = {
   INFO: 'info',
@@ -80,12 +54,18 @@ class Information extends Component {
       PropTypes.object,
       PropTypes.func,
     ]),
-    botanicalInfo: PropTypes.object,
+    clearupData: PropTypes.func,
+    getPlant: PropTypes.func,
+    plant: PropTypes.object,
+    plantId: PropTypes.string,
   }
 
   static defaultProps = {
+    clearupData() { },
     navigator() { },
-    botanicalInfo: mockupData,
+    getPlant() { },
+    plant: {},
+    plantId: '',
   }
 
   constructor(props) {
@@ -106,6 +86,18 @@ class Information extends Component {
     this.isExpanded = false
   }
 
+  componentDidMount() {
+    const { plantId, getPlant } = this.props
+    getPlant(plantId)
+  }
+
+  componentDidUpdate() {
+    log(this.props.plant)
+  }
+
+  componentWillUnmount() {
+    this.props.clearupData()
+  }
   /**
    * Start PanResponder Handle
    */
@@ -192,8 +184,8 @@ class Information extends Component {
       name={name} />
 
   renderTags = () => {
-    const { botanicalInfo } = this.props
-    const { tags } = botanicalInfo
+    const { plant } = this.props
+    const { tags } = plant
 
     return tags.map((tag, index) => <Tag key={`${tag}-${index}`} text={tag} />)
   }
@@ -222,13 +214,15 @@ class Information extends Component {
 
     return (
       <View style={styles.contentButtonWarper}>
-        <Animated.View style={{ opacity: opacityComment, transform: [{ translateY: translateYComment }] }}>
+        <Animated.View style={[styles.buttonWrapper, { opacity: opacityComment, transform: [{ translateY: translateYComment }] }]}>
+          <Text style={styles.textButtonIndicator}>Comments</Text>
           <IconButton
             icon={COMMENT_ICON}
             iconSize={32}
             onPress={this.onToggleContent(SHOWING_CONTENTS.INFO, 1)} />
         </Animated.View>
-        <Animated.View style={{ opacity: opacityInfo, transform: [{ translateY: translateYInfo }] }}>
+        <Animated.View style={[styles.buttonWrapper, { opacity: opacityInfo, transform: [{ translateY: translateYInfo }] }]}>
+          <Text style={styles.textButtonIndicator}>Information</Text>
           <IconButton
             icon={LEAF_ICON}
             iconSize={32}
@@ -241,8 +235,8 @@ class Information extends Component {
   renderContentData = () => {
     const screenWidth = Dimensions.get('screen').width
     const contentWidth = (screenWidth - ((scale(25) * 2) + (scale(30) * 2)))
-    const { botanicalInfo } = this.props
-    const { info, comments } = botanicalInfo
+    const { plant } = this.props
+    const { detail, comments } = plant
 
     const translateYInfo = this.animatedContentTaggle.interpolate({
       inputRange: [0, 1],
@@ -270,7 +264,7 @@ class Information extends Component {
           <ScrollView
             style={styles.infoWarpper}
             showsVerticalScrollIndicator={false} >
-            <Text style={styles.infoText} >{info}</Text>
+            <Text style={styles.infoText} >{detail}</Text>
           </ScrollView>
         </Animated.View>
         <Animated.View style={{ opacity: opacityComment, transform: [{ translateX: translateYComment }] }}>
@@ -289,8 +283,9 @@ class Information extends Component {
     const ContentButton = this.renderContentButton
     const ContentData = this.renderContentData
     const { imageHasLoaded } = this.state
-    const { botanicalInfo } = this.props
-    const { name } = botanicalInfo
+    const { plant } = this.props
+    const name = _.get(plant, 'name', '')
+    const rating = _.get(plant, 'rating', 0)
     const Tags = this.renderTags
 
     const minMarginTop = scale(120)
@@ -335,7 +330,7 @@ class Information extends Component {
             <ContentButton />
           </View>
           <View style={styles.ratingWarpper}>
-            <Rating rating={3} />
+            <Rating rating={rating} />
           </View>
           <View style={styles.tagsWarpper}>
             <Tags />
@@ -348,9 +343,10 @@ class Information extends Component {
 
   renderImagesBackground = () => {
     const screenWidth = Dimensions.get('screen').width
-    const { botanicalInfo } = this.props
-    const { images } = botanicalInfo
+    const { plant } = this.props
+    const images = _.get(plant, 'images', [])
 
+    const imageUris = images.map(im => ({ uri: im }))
     const renderImages = (image) =>
       <ImageBackground
         onLoadEnd={this.onBackgroundLoaded}
@@ -370,12 +366,24 @@ class Information extends Component {
       <View style={styles.imageBackgroundWarpper}>
         <Carousel
           ref={this.imagesRef}
-          data={images}
+          data={imageUris}
           renderItem={renderImages}
           sliderWidth={screenWidth}
           itemWidth={screenWidth} />
       </View>
     )
+  }
+
+  onNextImage = () => {
+    if (!_.isEmpty(this.imagesRef)) {
+      this.imagesRef.current.snapToNext()
+    }
+  }
+
+  onPrevImage = () => {
+    if (!_.isEmpty(this.imagesRef)) {
+      this.imagesRef.current.snapToPrev()
+    }
   }
 
   render() {
@@ -388,6 +396,20 @@ class Information extends Component {
         <StatusBar barStyle='light-content' />
         <View style={styles.backgroundContainer} ref={this.viewBlur}>
           <ImagesBackground />
+          <View style={styles.imageIndicatorWrapper} pointerEvents="box-none">
+            <View style={styles.imageDirectionIndicatorWrapper}>
+              <IconButton
+                icon={PREVIOUS_ICON}
+                iconSize={20}
+                opacity={0.3}
+                onPress={this.onPrevImage} />
+              <IconButton
+                icon={NEXT_ICON}
+                iconSize={20}
+                opacity={0.3}
+                onPress={this.onNextImage} />
+            </View>
+          </View>
           <View style={styles.emptyBackground} />
         </View>
         <View style={styles.navbarContainer}>
@@ -399,4 +421,13 @@ class Information extends Component {
   }
 }
 
-export default Information
+const mapStateToProps = state => ({
+  plant: state[project.name].plant.data
+})
+
+const mapDispatchToProp = {
+  getPlant: getPlantInfo,
+  clearupData: clearPlant,
+}
+
+export default connect(mapStateToProps, mapDispatchToProp)(Information)
