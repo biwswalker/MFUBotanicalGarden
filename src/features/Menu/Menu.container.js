@@ -13,6 +13,7 @@ const BACK_ICON = require('@images/icon/left-arrow.png')
 const Menu = (props) => {
 
   const {
+    onChangeScene,
     activeScene,
     router,
   } = props
@@ -25,6 +26,7 @@ const Menu = (props) => {
       if (['Map', 'About', 'Contact'].includes(scene)) {
         return getNavigator().push(scene, {})
       }
+      onChangeScene(scene)
       router.push(scene, {}, { animation: 'none' })
     })
   }
@@ -84,9 +86,11 @@ const Menu = (props) => {
 export default Menu
 
 Menu.propTypes = {
-  activeScene: PropTypes.string
+  activeScene: PropTypes.string,
+  onChangeScene: PropTypes.func,
 }
 
 Menu.defaultProps = {
-  activeScene: ''
+  activeScene: '',
+  onChangeScene() { },
 }

@@ -48,8 +48,14 @@ class Initial extends Component {
 
   onPressOpenDrawer = () => {
     const { activeScene } = this.state
-    const drawer = () => <Menu  activeScene={activeScene} router={this.router}/>
+    const drawer = () => <Menu activeScene={activeScene} router={this.router} onChangeScene={this.onMenuChangeScene} />
     ModalController.show({ child: drawer })
+  }
+
+  onMenuChangeScene = (scene) => {
+    this.setState({
+      activeScene: scene,
+    })
   }
 
   renderSceneNameComponent = () => {
