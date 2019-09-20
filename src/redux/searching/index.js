@@ -1,8 +1,15 @@
 import searchReducer from './reducer'
-import { getSearhingPlantList, clearSearchList } from './actionCreator'
+import { 
+  getRecentSearchPlantList,
+  getSearhingPlantList, 
+  getSearhPlantList,
+  clearSearchList 
+} from './actionCreator'
 
 export { 
   searchReducer, 
+  getRecentSearchPlantList,
   getSearhingPlantList,
+  getSearhPlantList,
   clearSearchList,
 }

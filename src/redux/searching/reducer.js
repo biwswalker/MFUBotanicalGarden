@@ -21,6 +21,25 @@ const reducer = (state = initialState, action) => {
         code: action.code,
         error: action.error,
       }
+    case actionTypeConst.search.REQUEST:
+      return {
+        ...state,
+        isFetching: true,
+      }
+    case actionTypeConst.search.SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        code: action.code,
+        searchResult: action.data,
+      }
+    case actionTypeConst.search.FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        code: action.code,
+        error: action.error,
+      }
     default:
       return state
   }
