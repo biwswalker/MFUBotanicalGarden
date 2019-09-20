@@ -9,7 +9,7 @@ export const initialState = {
 }
 
 export const endpoints = {
-  search: `http://${apiEndpoint}/search`
+  search: (keyword) => `http://${apiEndpoint}/search?keyword=${keyword}`
 }
 
 export const actionTypeConst = {

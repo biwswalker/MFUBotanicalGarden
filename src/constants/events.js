@@ -1,3 +1,4 @@
 export default {
   MODAL: 'MODAL_EVENT',
+  RECENT_SERACH: 'RECENT_SERACH',
 }
