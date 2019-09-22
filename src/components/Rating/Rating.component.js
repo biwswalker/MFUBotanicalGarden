@@ -49,7 +49,7 @@ class Rating extends Component {
   }
 
   render() {
-    const { maxRating, rating, size } = this.props
+    const { maxRating, rating, size, color } = this.props
     const Stars = this.renderStar
     const textSize = size === 'small' ? scale(12) : scale(14)
     const containerPaddingVertical = size === 'small' ? scale(0) : scale(5)
@@ -59,7 +59,7 @@ class Rating extends Component {
         <View style={[styles.ratingContainer, { width: containerWidth }]}>
           <Stars />
         </View>
-        <Text style={[styles.ratingAmountText, { fontSize: textSize }]}>{`${rating} Ratings`}</Text>
+        <Text style={[styles.ratingAmountText, { fontSize: textSize, color }]}>{`${rating} Ratings`}</Text>
       </View>
     )
   }

@@ -11,6 +11,7 @@ import {
   PanResponder,
   findNodeHandle,
   ImageBackground,
+  TouchableHighlight,
 } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import { BlurView } from '@react-native-community/blur'
@@ -160,6 +161,11 @@ class Information extends Component {
     this.setState({ currentContent }, this.startAnimatedContentTaggle(toValue))
   }
 
+  onPreeReview = () => {
+    const { plant, navigator } = this.props
+    navigator.push('Review', { plant }, { animation: 'right' })
+  }
+
   startAnimatedFadeIn = () => {
     Animated.timing(this.animatedFadeInOpacity, {
       toValue: 1,
@@ -192,41 +198,22 @@ class Information extends Component {
 
   renderContentButton = () => {
     const opacityComment = this.animatedContentTaggle.interpolate({
-      inputRange: [0, 0.5],
-      outputRange: [1, 0]
-    })
-
-    const translateYComment = this.animatedContentTaggle.interpolate({
-      inputRange: [0, 1],
-      outputRange: [0, 44]
-    })
-
-
-    const opacityInfo = this.animatedContentTaggle.interpolate({
       inputRange: [0.5, 1],
       outputRange: [0, 1]
     })
 
-    const translateYInfo = this.animatedContentTaggle.interpolate({
+    const translateYComment = this.animatedContentTaggle.interpolate({
       inputRange: [0, 1],
-      outputRange: [0, -44]
+      outputRange: [44, 0]
     })
 
     return (
       <View style={styles.contentButtonWarper}>
         <Animated.View style={[styles.buttonWrapper, { opacity: opacityComment, transform: [{ translateY: translateYComment }] }]}>
-          <Text style={styles.textButtonIndicator}>Comments</Text>
           <IconButton
             icon={COMMENT_ICON}
             iconSize={32}
-            onPress={this.onToggleContent(SHOWING_CONTENTS.INFO, 1)} />
-        </Animated.View>
-        <Animated.View style={[styles.buttonWrapper, { opacity: opacityInfo, transform: [{ translateY: translateYInfo }] }]}>
-          <Text style={styles.textButtonIndicator}>Information</Text>
-          <IconButton
-            icon={LEAF_ICON}
-            iconSize={32}
-            onPress={this.onToggleContent(SHOWING_CONTENTS.COMMENT, 0)} />
+            onPress={() => this.onPreeReview()} />
         </Animated.View>
       </View>
     )
@@ -267,7 +254,7 @@ class Information extends Component {
             <Text style={styles.infoText} >{detail}</Text>
           </ScrollView>
         </Animated.View>
-        <Animated.View style={{ opacity: opacityComment, transform: [{ translateX: translateYComment }] }}>
+        <Animated.View style={{ width: contentWidth, opacity: opacityComment, transform: [{ translateX: translateYComment }] }}>
           <FlatList
             keyExtractor={this.keyExtractorComments}
             renderItem={this.renderComments}
@@ -280,6 +267,9 @@ class Information extends Component {
 
   renderContent = () => {
     const screenHeight = Dimensions.get('screen').height
+    const screenWidth = Dimensions.get('screen').width
+    const contentWidth = (screenWidth - ((scale(25) * 2) + (scale(30) * 2)))
+    const tabWidth = ((contentWidth / 2) - 4)
     const ContentButton = this.renderContentButton
     const ContentData = this.renderContentData
     const { imageHasLoaded } = this.state
@@ -288,8 +278,8 @@ class Information extends Component {
     const rating = _.get(plant, 'rating', 0)
     const Tags = this.renderTags
 
-    const minMarginTop = scale(120)
-    const maxMarginTop = (screenHeight - scale(260))
+    const minMarginTop = scale(220)
+    const maxMarginTop = (screenHeight - scale(440))
 
     if (!imageHasLoaded) {
       return <Fragment />
@@ -308,6 +298,11 @@ class Information extends Component {
     const fadeInTranslate = this.animatedFadeInOpacity.interpolate({
       inputRange: [0, 1],
       outputRange: [40, 0]
+    })
+
+    const sliderTabTransition = this.animatedContentTaggle.interpolate({
+      inputRange: [0, 1],
+      outputRange: [0, (tabWidth+4)]
     })
 
     return (
@@ -329,11 +324,28 @@ class Information extends Component {
             <Text style={styles.nameText}>{name}</Text>
             <ContentButton />
           </View>
+          <View style={styles.tagsWarpper}>
+            <Tags />
+          </View>
           <View style={styles.ratingWarpper}>
             <Rating rating={rating} />
           </View>
-          <View style={styles.tagsWarpper}>
-            <Tags />
+          <View style={styles.tabsWrapper}>
+            <View style={styles.tabsContainer}>
+              <Animated.View style={[styles.activeTab, { width: tabWidth, transform: [{ translateX: sliderTabTransition }] }]} />
+              <TouchableHighlight
+                style={styles.tabTextWrapper}
+                underlayColor={Colors.WHITE_FA_TRANSPARENTER}
+                onPress={this.onToggleContent(SHOWING_CONTENTS.INFO, 0)}>
+                <Text style={styles.tabText}>Information</Text>
+              </TouchableHighlight>
+              <TouchableHighlight
+                style={styles.tabTextWrapper}
+                underlayColor={Colors.WHITE_FA_TRANSPARENTER}
+                onPress={this.onToggleContent(SHOWING_CONTENTS.INFO, 1)}>
+                <Text style={styles.tabText}>Reviews</Text>
+              </TouchableHighlight>
+            </View>
           </View>
           <ContentData />
         </View>

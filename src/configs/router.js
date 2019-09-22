@@ -6,6 +6,7 @@ import {
   Home,
   About,
   Search,
+  Review,
   QRCode,
   Contact,
   Initial,
@@ -18,6 +19,7 @@ import {
 const routes = {
   Map,
   About,
+  Review,
   Contact,
   Initial,
   PlantList,

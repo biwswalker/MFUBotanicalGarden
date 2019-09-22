@@ -5,9 +5,8 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "ios-x": "react-native run-ios --simulator='iPhone X'",
     "android": "react-native run-android",
-    "ios": "react-native run-ios",
+    "ios": "react-native run-ios --simulator='iPhone 11 Pro Max'",
     "clean": "rm -rf $TMPDIR/react-native-packager-cache-* && rm -rf $TMPDIR/metro-bundler-cache-* && rm -rf node_modules/ package-lock.json && npm cache clean --force && npm install && npm start -- --reset-cache"
   },
   "dependencies": {

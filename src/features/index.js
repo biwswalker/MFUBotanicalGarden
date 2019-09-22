@@ -3,6 +3,7 @@ import { Home } from './Home'
 import { Menu } from './Menu'
 import { About } from './About'
 import { QRCode } from './QRCode'
+import { Review } from './Review'
 import { Search } from './Search'
 import { Contact } from './Contact'
 import { Initial } from './Initial'
@@ -17,6 +18,7 @@ export {
   Menu,
   About,
   QRCode,
+  Review,
   Search,
   Contact,
   Initial,
