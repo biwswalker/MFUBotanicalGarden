@@ -1,11 +1,18 @@
+import AsyncStorage from '@react-native-community/async-storage'
 import axios from 'axios'
-import _ from 'lodash'
-import { project } from '../configs/environment'
+import { Events } from '@constants'
+
+const getToken = (callback = () => { }) => {
+  AsyncStorage.getItem(Events.ACCESS_TOKEN, (err, result) => {
+    callback(result)
+  })
+}
 
 const axiosMiddleware = ({ getState }) => next => (action) => {
-  const authToken = _.get(getState()[project.name], 'user.token')
-  axios.defaults.headers.common.Authorization = authToken || ''
-  return next(action)
+  getToken((token) => {
+    axios.defaults.headers.common.Authorization = token || ''
+    return next(action)
+  })
 }
 
 export default axiosMiddleware

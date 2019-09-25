@@ -73,6 +73,7 @@ const styles = {
     marginTop: scale(0),
   },
   infoWarpper: {
+    flex: 1,
     marginTop: scale(16, 'vertical'),
     paddingTop: scale(8, 'vertical')
   },
@@ -110,14 +111,6 @@ const styles = {
   imageBackgroundWarpper: {
     flex: 4,
   },
-  textButtonIndicator: {
-    position: 'absolute',
-    fontFamily: Fonts.QuarkLight,
-    fontSize: scale(12),
-    color: Colors.WHITE,
-    textAlign: 'justify',
-    bottom: -10
-  },
   buttonWrapper: {
     width: scale(55),
     alignItems: 'center'
@@ -134,6 +127,38 @@ const styles = {
     justifyContent: 'space-between',
     flexDirection: 'row',
   },
+  tabsWrapper: {
+    paddingVertical: scale(0, 'vertical')
+  },
+  tabsContainer: {
+    borderRadius: 5,
+    height: scale(28, 'vertical'),
+    backgroundColor: Colors.WHITE_FA_TRANSPARENTER,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  tabTextWrapper: {
+    borderRadius: scale(3),
+    paddingTop: scale(5),
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  tabText: {
+    color: Colors.WHITE_FA,
+    fontSize: scale(16),
+    lineHeight: scale(20),
+    fontFamily: Fonts.QuarkBold,
+  },
+  activeTab: {
+    backgroundColor: Colors.WHITE_FA_TRANSPARENT,
+    position: 'absolute',
+    top: scale(2, 'vertical'),
+    left: scale(2),
+    borderRadius: scale(3),
+    height: scale(24, 'vertical'),
+  }
 }
 
 export default StyleSheet.create(styles)

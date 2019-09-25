@@ -19,6 +19,7 @@ class IconButton extends Component {
     size: PropTypes.number,
     tintColor: PropTypes.string,
     opacity: PropTypes.number,
+    disabled: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -28,20 +29,25 @@ class IconButton extends Component {
     size: 44,
     tintColor: Colors.WHITE,
     opacity: 1,
+    disabled: false,
   }
 
   render() {
     const {
       tintColor,
+      disabled,
       iconSize,
       onPress,
       opacity,
       icon,
       size,
     } = this.props
+
+    const opacityState = disabled ? 0.3 : opacity
     return (
       <TouchableHighlight
         onPress={onPress}
+        disabled={disabled}
         underlayColor='rgba(250,250,250,0.2)'
         style={[styles.container, {
           width: size,
@@ -52,10 +58,10 @@ class IconButton extends Component {
           <Image
             source={icon}
             style={[styles.iconImage, {
-              width: iconSize,
+              opacity: opacityState,
               height: iconSize,
+              width: iconSize,
               tintColor,
-              opacity,
             }]} />
         </View>
       </TouchableHighlight>

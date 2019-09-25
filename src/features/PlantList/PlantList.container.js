@@ -28,10 +28,6 @@ const PlantList = (props) => {
     return () => dispatch(clearHighlight())
   }, [])
 
-  useEffect(() => {
-    log('updated', plantList)
-  });
-
   onPressBack = () => {
     props.navigator.pop()
   }

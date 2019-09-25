@@ -20,12 +20,10 @@ const responseInterceptor = response => {
   const code = _.get(response, 'status', undefined)
   return { data, code }
 }
-const errorResponseHandler = (store) => error => {
-  const { dispatch } = store
-  return Promise.reject(error)
+const errorResponseHandler = ({ dispatch }) => error => {
+  const errorResponse = _.get(error, 'response.data')
+  return Promise.reject(errorResponse)
 }
-
-
 
 const initService = (config, store) => {
   // Axios globals configuration

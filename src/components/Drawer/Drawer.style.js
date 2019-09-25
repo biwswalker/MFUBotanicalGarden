@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     height,
   },
   backdrop: {
-    backgroundColor: Colors.TRANSPARENT,
+    backgroundColor: Colors.BLACK_TRANSPARENT_LIGHTNEST,
     flex: 1,
   },
   content: {
