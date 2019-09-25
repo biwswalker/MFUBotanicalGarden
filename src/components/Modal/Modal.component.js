@@ -36,7 +36,7 @@ class Modal extends Component {
         onModalHide={this.onModalHide}
         animationIn='fadeIn'
         animationOut='fadeOut'
-        backdropOpacity={0.4}
+        backdropOpacity={0}
         animationInTiming={200}
         animationOutTiming={200}
         style={{ margin: 0 }}

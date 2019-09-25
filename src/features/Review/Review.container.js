@@ -1,4 +1,8 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, {
+  useRef,
+  useEffect,
+  useState,
+} from 'react'
 import {
   View,
   Text,
@@ -8,16 +12,21 @@ import {
   TextInput,
   KeyboardAvoidingView,
 } from 'react-native'
-import SafeAreaView from 'react-native-safe-area-view'
 import {
+  ModalController,
   IconButton,
   Rating,
-  Tag
+  Tag,
 } from '@components'
+import { Login } from '@features'
+import SafeAreaView from 'react-native-safe-area-view'
+import { useSelector, useDispatch } from 'react-redux'
 import _ from 'lodash'
+import Colors from '@colors'
+import { project } from '@constants'
+import { getUser } from '@redux/user'
 
 import styles from './Review.style'
-import Colors from '@colors'
 
 const SEND_ICON = require('@images/icon/send.png')
 const BACK_ICON = require('@images/icon/left-arrow.png')
@@ -26,23 +35,55 @@ const ACTIVE_STAR_ICON = require('@images/icon/star-active.png')
 
 const Review = (props) => {
 
+  const safeAreaViewRef = useRef(null)
   const reviewInputRef = useRef(null)
   const [commentText, setCommentText] = useState('')
   const [commentRating, setCommentRating] = useState(0)
 
   const { navigator, plant } = props
 
+  const dispatch = useDispatch()
+  const userCode = useSelector(state => state[project.name].user.code)
+
   useEffect(() => {
-    if (reviewInputRef) {
-      reviewInputRef.current.focus()
-    }
     return () => {
       Keyboard.dismiss()
     }
   }, [])
 
+  useEffect(() => {
+    if (userCode === null) {
+      dispatch(getUser())
+    } else if (userCode !== 200) {
+      openLogin()
+    } else if (userCode === 200) {
+      if (reviewInputRef) {
+        reviewInputRef.current.focus()
+      }
+    }
+  }, [userCode])
+
+
   const onPressBack = () => {
     navigator.pop()
+  }
+
+  openLogin = () => {
+    const scene = () => <Login onCancel={onCancelLogin} onRegisteredSuccess={onSuccessLogin} backgroundRef={safeAreaViewRef} />
+    ModalController.show({ child: scene })
+  }
+
+  onCancelLogin = () => {
+    ModalController.hide()
+    navigator.pop()
+  }
+
+  onSuccessLogin = () => {
+    log('success login')
+    ModalController.hide()
+    if (reviewInputRef) {
+      reviewInputRef.current.focus()
+    }
   }
 
   onChangeText = (text) => {
@@ -82,6 +123,7 @@ const Review = (props) => {
 
   return (
     <SafeAreaView
+      ref={safeAreaViewRef}
       forceInset={{ vertical: 'always' }}
       style={styles.container}>
       <StatusBar barStyle="dark-content" />

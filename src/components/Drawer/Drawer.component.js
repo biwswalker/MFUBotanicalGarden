@@ -61,7 +61,7 @@ class Drawer extends Component {
 
     return (
       <View style={styles.container}>
-        <TouchableOpacity style={styles.backdrop} onPress={this.pressBackdrop} />
+        <TouchableOpacity style={styles.backdrop} onPress={this.pressBackdrop} activeOpacity={1} />
         <Animated.View style={[styles.content, { opacity, transform: [{ translateX }] }]}>
           <SafeAreaView
             forceInset={{ vertical: 'always' }}

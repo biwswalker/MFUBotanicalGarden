@@ -2,6 +2,7 @@ import { Map } from './Map'
 import { Home } from './Home'
 import { Menu } from './Menu'
 import { About } from './About'
+import { Login } from './Login'
 import { QRCode } from './QRCode'
 import { Review } from './Review'
 import { Search } from './Search'
@@ -17,6 +18,7 @@ export {
   Home,
   Menu,
   About,
+  Login,
   QRCode,
   Review,
   Search,
