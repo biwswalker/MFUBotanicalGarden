@@ -46,7 +46,6 @@ const Search = () => {
 
   useEffect(() => {
     getRecentSearchPlantList((_err, recent) => {
-      log(recent)
       const recents = JSON.parse(recent)
       if (!_.isEmpty(recents)) {
         setStage('recent')

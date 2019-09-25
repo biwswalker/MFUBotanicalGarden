@@ -92,10 +92,6 @@ class Information extends Component {
     getPlant(plantId)
   }
 
-  componentDidUpdate() {
-    log(this.props.plant)
-  }
-
   componentWillUnmount() {
     this.props.clearupData()
   }
@@ -161,9 +157,14 @@ class Information extends Component {
     this.setState({ currentContent }, this.startAnimatedContentTaggle(toValue))
   }
 
+  onReviewSuccess = () => {
+    const { plantId, getPlant } = this.props
+    getPlant(plantId)
+  }
+
   onPreeReview = () => {
     const { plant, navigator } = this.props
-    navigator.push('Review', { plant }, { animation: 'right' })
+    navigator.push('Review', { plant, onReviewSuccess: this.onReviewSuccess }, { animation: 'right' })
   }
 
   startAnimatedFadeIn = () => {
@@ -302,7 +303,7 @@ class Information extends Component {
 
     const sliderTabTransition = this.animatedContentTaggle.interpolate({
       inputRange: [0, 1],
-      outputRange: [0, (tabWidth+4)]
+      outputRange: [0, (tabWidth + 4)]
     })
 
     return (

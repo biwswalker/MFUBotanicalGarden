@@ -25,6 +25,7 @@ import _ from 'lodash'
 import Colors from '@colors'
 import { project } from '@constants'
 import { getUser } from '@redux/user'
+import { addReview, clearReview } from '@redux/review'
 
 import styles from './Review.style'
 
@@ -44,10 +45,13 @@ const Review = (props) => {
 
   const dispatch = useDispatch()
   const userCode = useSelector(state => state[project.name].user.code)
+  const reviewCode = useSelector(state => state[project.name].review.code)
+  const reviewFetching = useSelector(state => state[project.name].review.isFetching)
 
   useEffect(() => {
     return () => {
       Keyboard.dismiss()
+      dispatch(clearReview())
     }
   }, [])
 
@@ -63,6 +67,13 @@ const Review = (props) => {
     }
   }, [userCode])
 
+  useEffect(() => {
+    if (reviewCode === 200 && !reviewFetching) {
+      Keyboard.dismiss()
+      props.onReviewSuccess()
+      navigator.pop()
+    }
+  }, [reviewCode, reviewFetching])
 
   const onPressBack = () => {
     navigator.pop()
@@ -79,7 +90,6 @@ const Review = (props) => {
   }
 
   onSuccessLogin = () => {
-    log('success login')
     ModalController.hide()
     if (reviewInputRef) {
       reviewInputRef.current.focus()
@@ -95,8 +105,7 @@ const Review = (props) => {
   }
 
   onSubmitComment = () => {
-    Keyboard.dismiss()
-    navigator.pop()
+    dispatch(addReview({ _id: plant._id, rating: commentRating, comment: commentText }))
   }
 
   const name = _.get(plant, 'name', '')

@@ -2,17 +2,17 @@ import { actionTypeConst } from './constants'
 import { fetchAddReview } from './service'
 
 const requestAddReview = () => ({
-  type: actionTypeConst.search.REQUEST
+  type: actionTypeConst.review.REQUEST
 })
 
 const successAddReview = ({ data, code }) => ({
-  type: actionTypeConst.search.SUCCESS,
+  type: actionTypeConst.review.SUCCESS,
   data: data.data,
   code
 })
 
 const failureAddReview = ({ error, code }) => ({
-  type: actionTypeConst.search.FAILURE,
+  type: actionTypeConst.review.FAILURE,
   error,
   code,
 })
