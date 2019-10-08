@@ -6,7 +6,6 @@ import { Login } from './Login'
 import { QRCode } from './QRCode'
 import { Review } from './Review'
 import { Search } from './Search'
-import { Contact } from './Contact'
 import { Initial } from './Initial'
 import { Category } from './Category'
 import { PlantList } from './PlantList'
@@ -22,7 +21,6 @@ export {
   QRCode,
   Review,
   Search,
-  Contact,
   Initial,
   Category,
   PlantList,

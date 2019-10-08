@@ -23,7 +23,7 @@ const Menu = (props) => {
   const onPressMenu = (scene) => () => {
     drawerRef.current.close(() => {
       ModalController.hide()
-      if (['Map', 'About', 'Contact'].includes(scene)) {
+      if (['Map', 'About'].includes(scene)) {
         return getNavigator().push(scene, {})
       }
       onChangeScene(scene)
@@ -76,7 +76,6 @@ const Menu = (props) => {
           <Menus name="QRCode" />
           <Menus name="Map" />
           <Menus name="About" />
-          <Menus name="Contact" />
         </View>
       </View>
     </Drawer>

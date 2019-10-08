@@ -16,5 +16,5 @@ const reducerList = {
   highlight,
 }
 
-export default reducers = storeName =>
+export default (storeName) =>
   combineReducers({ [storeName]: combineReducers(reducerList) })
