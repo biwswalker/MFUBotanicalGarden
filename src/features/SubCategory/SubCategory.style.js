@@ -49,7 +49,10 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.QuarkBold,
     fontSize: scale(18),
     color: Colors.BLACK_666,
-  }
+  },
+  tags: {
+    flexDirection: 'row',
+  },
 })
 
 export default styles

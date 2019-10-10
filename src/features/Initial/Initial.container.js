@@ -65,15 +65,15 @@ class Initial extends Component {
         <Text style={styles.bgText}>Botanical Garden</Text>
       </Fragment>
     )
-    const CategoryText = () => (<Text style={styles.searchText}>Category</Text>)
+    const GardenText = () => (<Text style={styles.searchText}>Garden</Text>)
     const QRCodeText = () => (<Text style={styles.searchText}>QRCode</Text>)
     const SearchText = () => (<Text style={styles.searchText}>Search</Text>)
 
     switch (this.state.activeScene) {
       case 'Home':
         return <HomeText />
-      case 'Category':
-        return <CategoryText />
+      case 'Garden':
+        return <GardenText />
       case 'Search':
         return <SearchText />
       case 'QRCode':
@@ -93,7 +93,7 @@ class Initial extends Component {
 
     const tabs = [
       { name: 'Home', icon: HOME_ICON },
-      { name: 'Category', icon: LEAF_ICON },
+      { name: 'Garden', icon: LEAF_ICON },
       { name: 'QRCode', icon: QR_ICON },
       { name: 'Search', icon: TRANSPARENCY_ICON },
     ]

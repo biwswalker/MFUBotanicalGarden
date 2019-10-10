@@ -3,6 +3,7 @@ import { combineReducers } from 'redux'
 import {
   user,
   plant,
+  garden,
   review,
   search,
   highlight,
@@ -11,6 +12,7 @@ import {
 const reducerList = {
   user,
   plant,
+  garden,
   review,
   search,
   highlight,

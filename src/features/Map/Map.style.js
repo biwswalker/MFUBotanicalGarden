@@ -29,8 +29,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   marker: {
-    width: scale(45),
-    height: scale(45),
+    width: scale(40),
+    height: scale(40),
   }
 })
 

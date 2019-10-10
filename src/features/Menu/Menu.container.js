@@ -72,7 +72,7 @@ const Menu = (props) => {
         </View>
         <View style={styles.menuContainer}>
           <Menus name="Home" />
-          <Menus name="Category" />
+          <Menus name="Garden" />
           <Menus name="QRCode" />
           <Menus name="Map" />
           <Menus name="About" />
