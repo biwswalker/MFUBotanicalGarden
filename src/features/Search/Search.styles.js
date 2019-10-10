@@ -21,9 +21,11 @@ const styles = {
     tintColor: Colors.BLACK_TRANSPARENT_LIGHTER,
   },
   searchField: {
+    fontSize: scale(18),
+    fontFamily: Fonts.QuarkLight,
     flex: 1,
+    paddingHorizontal: scale(10)
   },
-
   listContainer: {
     flex: 1,
   },
@@ -49,11 +51,25 @@ const styles = {
     paddingVertical: scale(12)
   },
   searchResultItemText: {
-    fontFamily: Fonts.OpenSansCondensedLight,
+    fontFamily: Fonts.QuarkLight,
     fontSize: scale(20),
     lineHeight: scale(24, 'vertical'),
     color: Colors.GREEN_DARKNEST,
     textAlign: 'left'
+  },
+  tags: {
+    flexDirection: 'row',
+  },
+  emptyContainer: {
+    flex: 1,
+    paddingTop: scale(60),
+    alignItems: 'center',
+  },
+  emptyText: {
+    fontFamily: Fonts.QuarkLight,
+    fontSize: scale(24),
+    lineHeight: scale(28, 'vertical'),
+    color: Colors.BLACK_666,
   }
 }
 

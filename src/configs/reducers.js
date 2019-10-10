@@ -3,6 +3,8 @@ import { combineReducers } from 'redux'
 import {
   user,
   plant,
+  garden,
+  review,
   search,
   highlight,
 } from '@redux'
@@ -10,9 +12,11 @@ import {
 const reducerList = {
   user,
   plant,
+  garden,
+  review,
   search,
   highlight,
 }
 
-export default reducers = storeName =>
+export default (storeName) =>
   combineReducers({ [storeName]: combineReducers(reducerList) })

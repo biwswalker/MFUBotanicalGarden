@@ -11,6 +11,7 @@ import {
   PanResponder,
   findNodeHandle,
   ImageBackground,
+  TouchableHighlight,
 } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import { BlurView } from '@react-native-community/blur'
@@ -91,10 +92,6 @@ class Information extends Component {
     getPlant(plantId)
   }
 
-  componentDidUpdate() {
-    log(this.props.plant)
-  }
-
   componentWillUnmount() {
     this.props.clearupData()
   }
@@ -160,6 +157,16 @@ class Information extends Component {
     this.setState({ currentContent }, this.startAnimatedContentTaggle(toValue))
   }
 
+  onReviewSuccess = () => {
+    const { plantId, getPlant } = this.props
+    getPlant(plantId)
+  }
+
+  onPreeReview = () => {
+    const { plant, navigator } = this.props
+    navigator.push('Review', { plant, onReviewSuccess: this.onReviewSuccess }, { animation: 'right' })
+  }
+
   startAnimatedFadeIn = () => {
     Animated.timing(this.animatedFadeInOpacity, {
       toValue: 1,
@@ -192,41 +199,22 @@ class Information extends Component {
 
   renderContentButton = () => {
     const opacityComment = this.animatedContentTaggle.interpolate({
-      inputRange: [0, 0.5],
-      outputRange: [1, 0]
-    })
-
-    const translateYComment = this.animatedContentTaggle.interpolate({
-      inputRange: [0, 1],
-      outputRange: [0, 44]
-    })
-
-
-    const opacityInfo = this.animatedContentTaggle.interpolate({
       inputRange: [0.5, 1],
       outputRange: [0, 1]
     })
 
-    const translateYInfo = this.animatedContentTaggle.interpolate({
+    const translateYComment = this.animatedContentTaggle.interpolate({
       inputRange: [0, 1],
-      outputRange: [0, -44]
+      outputRange: [44, 0]
     })
 
     return (
       <View style={styles.contentButtonWarper}>
         <Animated.View style={[styles.buttonWrapper, { opacity: opacityComment, transform: [{ translateY: translateYComment }] }]}>
-          <Text style={styles.textButtonIndicator}>Comments</Text>
           <IconButton
             icon={COMMENT_ICON}
             iconSize={32}
-            onPress={this.onToggleContent(SHOWING_CONTENTS.INFO, 1)} />
-        </Animated.View>
-        <Animated.View style={[styles.buttonWrapper, { opacity: opacityInfo, transform: [{ translateY: translateYInfo }] }]}>
-          <Text style={styles.textButtonIndicator}>Information</Text>
-          <IconButton
-            icon={LEAF_ICON}
-            iconSize={32}
-            onPress={this.onToggleContent(SHOWING_CONTENTS.COMMENT, 0)} />
+            onPress={() => this.onPreeReview()} />
         </Animated.View>
       </View>
     )
@@ -236,7 +224,14 @@ class Information extends Component {
     const screenWidth = Dimensions.get('screen').width
     const contentWidth = (screenWidth - ((scale(25) * 2) + (scale(30) * 2)))
     const { plant } = this.props
-    const { detail, comments } = plant
+    const {
+      botanicalDetail,
+      scientificName,
+      familyName,
+      anotherName,
+      properties,
+      comments
+    } = plant
 
     const translateYInfo = this.animatedContentTaggle.interpolate({
       inputRange: [0, 1],
@@ -264,10 +259,44 @@ class Information extends Component {
           <ScrollView
             style={styles.infoWarpper}
             showsVerticalScrollIndicator={false} >
-            <Text style={styles.infoText} >{detail}</Text>
+            {
+              !_.isEmpty(anotherName)
+              && <>
+                <Text style={styles.infoTextTitle} >ชื่ออื่น</Text>
+                <Text style={styles.infoText} >{anotherName}</Text>
+              </>
+            }
+            {
+              !_.isEmpty(scientificName)
+              && <>
+                <Text style={styles.infoTextTitle} >ชื่อวิทยาศาสตร์</Text>
+                <Text style={styles.infoText} >{scientificName}</Text>
+              </>
+            }
+            {
+              !_.isEmpty(familyName)
+              && <>
+                <Text style={styles.infoTextTitle} >ชื่อวงศ์</Text>
+                <Text style={styles.infoText} >{familyName}</Text>
+              </>
+            }
+            {
+              !_.isEmpty(botanicalDetail)
+              && <>
+                <Text style={styles.infoTextTitle} >ลักษณะทางพฤกษศาสตร์</Text>
+                <Text style={styles.infoText} >{botanicalDetail}</Text>
+              </>
+            }
+            {
+              !_.isEmpty(properties)
+              && <>
+                <Text style={styles.infoTextTitle} >สรรพคุณ</Text>
+                <Text style={styles.infoText} >{properties}</Text>
+              </>
+            }
           </ScrollView>
         </Animated.View>
-        <Animated.View style={{ opacity: opacityComment, transform: [{ translateX: translateYComment }] }}>
+        <Animated.View style={{ width: contentWidth, opacity: opacityComment, transform: [{ translateX: translateYComment }] }}>
           <FlatList
             keyExtractor={this.keyExtractorComments}
             renderItem={this.renderComments}
@@ -280,6 +309,9 @@ class Information extends Component {
 
   renderContent = () => {
     const screenHeight = Dimensions.get('screen').height
+    const screenWidth = Dimensions.get('screen').width
+    const contentWidth = (screenWidth - ((scale(25) * 2) + (scale(30) * 2)))
+    const tabWidth = ((contentWidth / 2) - 4)
     const ContentButton = this.renderContentButton
     const ContentData = this.renderContentData
     const { imageHasLoaded } = this.state
@@ -288,8 +320,8 @@ class Information extends Component {
     const rating = _.get(plant, 'rating', 0)
     const Tags = this.renderTags
 
-    const minMarginTop = scale(120)
-    const maxMarginTop = (screenHeight - scale(260))
+    const minMarginTop = scale(220)
+    const maxMarginTop = (screenHeight - scale(440))
 
     if (!imageHasLoaded) {
       return <Fragment />
@@ -310,6 +342,11 @@ class Information extends Component {
       outputRange: [40, 0]
     })
 
+    const sliderTabTransition = this.animatedContentTaggle.interpolate({
+      inputRange: [0, 1],
+      outputRange: [0, (tabWidth + 4)]
+    })
+
     return (
       <Animated.View style={[styles.contentContainer, {
         transform: [{ translateY: fadeInTranslate }],
@@ -320,7 +357,7 @@ class Information extends Component {
           viewRef={this.state.viewRef}
           style={styles.blurComponent}
           blurType='light'
-          blurAmount={15} />
+          blurAmount={70} />
         <View style={styles.panIndicatorWarpper} {...this.panResponder.panHandlers} >
           <View style={styles.panIndicator} />
         </View>
@@ -329,11 +366,28 @@ class Information extends Component {
             <Text style={styles.nameText}>{name}</Text>
             <ContentButton />
           </View>
+          <View style={styles.tagsWarpper}>
+            <Tags />
+          </View>
           <View style={styles.ratingWarpper}>
             <Rating rating={rating} />
           </View>
-          <View style={styles.tagsWarpper}>
-            <Tags />
+          <View style={styles.tabsWrapper}>
+            <View style={styles.tabsContainer}>
+              <Animated.View style={[styles.activeTab, { width: tabWidth, transform: [{ translateX: sliderTabTransition }] }]} />
+              <TouchableHighlight
+                style={styles.tabTextWrapper}
+                underlayColor={Colors.WHITE_FA_TRANSPARENTER}
+                onPress={this.onToggleContent(SHOWING_CONTENTS.INFO, 0)}>
+                <Text style={styles.tabText}>Information</Text>
+              </TouchableHighlight>
+              <TouchableHighlight
+                style={styles.tabTextWrapper}
+                underlayColor={Colors.WHITE_FA_TRANSPARENTER}
+                onPress={this.onToggleContent(SHOWING_CONTENTS.INFO, 1)}>
+                <Text style={styles.tabText}>Reviews</Text>
+              </TouchableHighlight>
+            </View>
           </View>
           <ContentData />
         </View>
@@ -354,9 +408,9 @@ class Information extends Component {
         style={styles.imageBackground}
         source={image.item}
         resizeMode='cover'>
-        <View style={styles.transparentSpace} />
+        {/* <View style={styles.transparentSpace} /> */}
         <LinearGradient
-          colors={[Colors.BLACK, Colors.BLACK_TRANSPARENT, Colors.TRANSPARENT]}
+          colors={[Colors.BLACK, Colors.BLACK_TRANSPARENT_LIGHTNEST, Colors.TRANSPARENT]}
           style={styles.linearSpace}
           start={{ x: 0, y: 1 }}
           end={{ x: 0, y: 0 }} />

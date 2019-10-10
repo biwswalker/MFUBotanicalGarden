@@ -1,3 +1,5 @@
 export default {
   MODAL: 'MODAL_EVENT',
+  RECENT_SERACH: 'RECENT_SERACH',
+  ACCESS_TOKEN: 'ACCESS_TOKEN',
 }

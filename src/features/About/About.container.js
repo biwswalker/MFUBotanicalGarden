@@ -13,7 +13,7 @@ const About = (props) => {
   onPressBack = () => {
     props.navigator.pop()
   }
-  
+
   return (
     <SafeAreaView
       forceInset={{ vertical: 'always' }}
@@ -25,6 +25,14 @@ const About = (props) => {
           iconSize={20}
           onPress={onPressBack} />
         <Text style={styles.sceneText}>About</Text>
+      </View>
+      <View style={styles.contentContainer}>
+        <View style={styles.logoContainer}>
+          <View style={styles.mfuWrapper}>
+            <Text style={styles.mfuText}>MFU</Text>
+          </View>
+          <Text style={styles.botanicalText}>Biotanical Garden App</Text>
+        </View>
       </View>
     </SafeAreaView>
   )

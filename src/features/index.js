@@ -2,11 +2,12 @@ import { Map } from './Map'
 import { Home } from './Home'
 import { Menu } from './Menu'
 import { About } from './About'
+import { Login } from './Login'
+import { Garden } from './Garden'
 import { QRCode } from './QRCode'
+import { Review } from './Review'
 import { Search } from './Search'
-import { Contact } from './Contact'
 import { Initial } from './Initial'
-import { Category } from './Category'
 import { PlantList } from './PlantList'
 import { SubCategory } from './SubCategory'
 import { Information } from './Information'
@@ -16,11 +17,12 @@ export {
   Home,
   Menu,
   About,
+  Login,
+  Garden,
   QRCode,
+  Review,
   Search,
-  Contact,
   Initial,
-  Category,
   PlantList,
   SubCategory,
   Information,

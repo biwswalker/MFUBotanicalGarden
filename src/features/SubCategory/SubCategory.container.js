@@ -1,67 +1,58 @@
-import React, { Fragment } from 'react'
+import React, { useEffect } from 'react'
 import {
   View,
   Text,
-  SectionList,
-  TouchableHighlight
+  FlatList,
 } from 'react-native'
 import SafeAreaView from 'react-native-safe-area-view'
+import { useDispatch, useSelector } from 'react-redux'
+import _ from 'lodash'
+import { clearGardenPlant, getGardenPlantList } from '@redux/garden'
+import { project } from '@constants'
 
 import Colors from '@colors'
-import { IconButton } from '@components'
+import { IconButton, CardItem, Tag } from '@components'
 import styles from './SubCategory.style'
 
 const BACK_ICON = require('@images/icon/left-arrow.png')
+const CARD_IMAGE_1 = require('@images/cards/card-graden.jpg')
+const EYE_ICON = require('@images/icon/eye.png')
 
 const SubCategory = (props) => {
 
-  const { category, navigator } = props
+  const { gardenId, gardenName, navigator } = props
 
-  const subCategorys = [
-    {
-      title: 'A', data: [
-        { _id: '', name: 'Acanthaceae' },
-        { _id: '', name: 'Achariaceae' },
-        { _id: '', name: 'Achatocarpaceae' },
-      ]
-    },
-    {
-      title: 'B', data: [
-        { _id: '', name: 'Balanophoraceae' },
-        { _id: '', name: 'Balsaminaceae' },
-        { _id: '', name: 'Begoniaceae' },
-      ]
-    },
-    {
-      title: 'C', data: [
-        { _id: '', name: 'Cactaceae' },
-        { _id: '', name: 'Campanulaceae' },
-        { _id: '', name: 'Cannaceae' },
-        { _id: '', name: 'Capparaceae' },
-        { _id: '', name: 'Caprifoliaceae' },
-        { _id: '', name: 'Celastraceae' },
-      ]
-    }
-  ]
+  const dispatch = useDispatch()
+  const gardenPlantList = useSelector(state => state[project.name].garden.plants)
+
+  useEffect(() => {
+    dispatch(getGardenPlantList(gardenId))
+    return () => dispatch(clearGardenPlant())
+  }, [])
 
   const subCategoryItemKey = (item, index) => `${item.name}${index}`
 
-  const renderHeaderSubCategory = ({ section }) => (
-    <View style={styles.headerSubCategoryWrapper}>
-      <Text style={styles.headerSubCategoryText}>{section.title}</Text>
-    </View>
-  )
+  const renderTags = (tags) => () => {
+    const tagsComponent = tags.map((tag, index) => (<Tag key={`${tag}-${index}`} text={tag} backgroundColor={Colors.BLACK_TRANSPARENT_LIGHTNEST} />))
+    return (
+      <View style={styles.tags}>{tagsComponent}</View>
+    )
+  }
 
-  const renderSubCategory = ({ item }) => (
-    <TouchableHighlight
-      style={styles.categoryWrapper}
-      underlayColor={Colors.BLACK_TRANS}
-      onPress={() => navigator.push('Information', { plantId: item._id }, { animation: 'bottom' })}>
-      <Fragment>
-        <Text style={styles.subCategoryText}>{item.name}</Text>
-      </Fragment>
-    </TouchableHighlight>
-  )
+  const renderResultItem = ({ item }) => {
+    const rawImage = _.head(_.get(item, 'images', []))
+    const image = _.isEmpty(rawImage)
+      ? CARD_IMAGE_1
+      : { uri: rawImage }
+    return (
+      <CardItem
+        title={item.name}
+        description={renderTags(item.tags)}
+        image={image}
+        rightIcon={EYE_ICON}
+        onPress={() => navigator.push('Information', { plantId: item._id }, { animation: 'bottom' })} />
+    )
+  }
 
   onPressBack = () => {
     navigator.pop()
@@ -77,15 +68,14 @@ const SubCategory = (props) => {
           tintColor={Colors.BLACK}
           iconSize={20}
           onPress={onPressBack} />
-        <Text style={styles.sceneText} ellipsizeMode="tail">{category.name}</Text>
+        <Text style={styles.sceneText} ellipsizeMode="tail">{gardenName}</Text>
       </View>
       <View style={styles.subCategoryWrapper}>
-        <SectionList
-          sections={subCategorys}
-          renderItem={renderSubCategory}
-          renderSectionHeader={renderHeaderSubCategory}
+        <FlatList
+          showsHorizontalScrollIndicator={false}
+          renderItem={renderResultItem}
           keyExtractor={subCategoryItemKey}
-        />
+          data={gardenPlantList} />
       </View>
     </SafeAreaView>
   )

@@ -28,10 +28,6 @@ const PlantList = (props) => {
     return () => dispatch(clearHighlight())
   }, [])
 
-  useEffect(() => {
-    log('updated', plantList)
-  });
-
   onPressBack = () => {
     props.navigator.pop()
   }
@@ -39,6 +35,7 @@ const PlantList = (props) => {
   const plantItemKey = (item, index) => `${item.id}${index}`
 
   const renderTags = (tags) => () => {
+    if (_.isEmpty(tags)) { return }
     const tagsComponent = tags.map((tag, index) => (<Tag key={`${tag}-${index}`} text={tag} backgroundColor={Colors.BLACK_TRANSPARENT_LIGHTNEST} />))
     return (
       <View style={styles.tags}>{tagsComponent}</View>

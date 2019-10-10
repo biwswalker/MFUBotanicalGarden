@@ -21,6 +21,16 @@ const styles = StyleSheet.create({
     lineHeight: scale(36, 'vertical'),
     color: Colors.BLACK,
     textAlign: 'right',
+  },
+  mapContainer: {
+    flex: 1,
+  },
+  map: {
+    flex: 1,
+  },
+  marker: {
+    width: scale(40),
+    height: scale(40),
   }
 })
 
