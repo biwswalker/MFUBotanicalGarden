@@ -157,7 +157,6 @@ const Review = (props) => {
             </View>
           </View>
         </View>
-
       </View>
       <KeyboardAvoidingView behavior='padding'>
         <View style={styles.reviewBoxContainer}>

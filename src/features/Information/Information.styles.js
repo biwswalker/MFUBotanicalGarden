@@ -77,6 +77,13 @@ const styles = {
     marginTop: scale(16, 'vertical'),
     paddingTop: scale(8, 'vertical')
   },
+  infoTextTitle: {
+    paddingTop: scale(16, 'vertical'),
+    fontFamily: Fonts.QuarkBold,
+    fontSize: scale(18),
+    color: Colors.WHITE,
+    textAlign: 'justify',
+  },
   infoText: {
     fontFamily: Fonts.QuarkLight,
     fontSize: scale(18),

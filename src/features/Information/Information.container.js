@@ -224,7 +224,14 @@ class Information extends Component {
     const screenWidth = Dimensions.get('screen').width
     const contentWidth = (screenWidth - ((scale(25) * 2) + (scale(30) * 2)))
     const { plant } = this.props
-    const { detail, comments } = plant
+    const {
+      botanicalDetail,
+      scientificName,
+      familyName,
+      anotherName,
+      properties,
+      comments
+    } = plant
 
     const translateYInfo = this.animatedContentTaggle.interpolate({
       inputRange: [0, 1],
@@ -252,7 +259,41 @@ class Information extends Component {
           <ScrollView
             style={styles.infoWarpper}
             showsVerticalScrollIndicator={false} >
-            <Text style={styles.infoText} >{detail}</Text>
+            {
+              !_.isEmpty(anotherName)
+              && <>
+                <Text style={styles.infoTextTitle} >ชื่ออื่น</Text>
+                <Text style={styles.infoText} >{anotherName}</Text>
+              </>
+            }
+            {
+              !_.isEmpty(scientificName)
+              && <>
+                <Text style={styles.infoTextTitle} >ชื่อวิทยาศาสตร์</Text>
+                <Text style={styles.infoText} >{scientificName}</Text>
+              </>
+            }
+            {
+              !_.isEmpty(familyName)
+              && <>
+                <Text style={styles.infoTextTitle} >ชื่อวงศ์</Text>
+                <Text style={styles.infoText} >{familyName}</Text>
+              </>
+            }
+            {
+              !_.isEmpty(botanicalDetail)
+              && <>
+                <Text style={styles.infoTextTitle} >ลักษณะทางพฤกษศาสตร์</Text>
+                <Text style={styles.infoText} >{botanicalDetail}</Text>
+              </>
+            }
+            {
+              !_.isEmpty(properties)
+              && <>
+                <Text style={styles.infoTextTitle} >สรรพคุณ</Text>
+                <Text style={styles.infoText} >{properties}</Text>
+              </>
+            }
           </ScrollView>
         </Animated.View>
         <Animated.View style={{ width: contentWidth, opacity: opacityComment, transform: [{ translateX: translateYComment }] }}>
@@ -316,7 +357,7 @@ class Information extends Component {
           viewRef={this.state.viewRef}
           style={styles.blurComponent}
           blurType='light'
-          blurAmount={15} />
+          blurAmount={70} />
         <View style={styles.panIndicatorWarpper} {...this.panResponder.panHandlers} >
           <View style={styles.panIndicator} />
         </View>
@@ -367,9 +408,9 @@ class Information extends Component {
         style={styles.imageBackground}
         source={image.item}
         resizeMode='cover'>
-        <View style={styles.transparentSpace} />
+        {/* <View style={styles.transparentSpace} /> */}
         <LinearGradient
-          colors={[Colors.BLACK, Colors.BLACK_TRANSPARENT, Colors.TRANSPARENT]}
+          colors={[Colors.BLACK, Colors.BLACK_TRANSPARENT_LIGHTNEST, Colors.TRANSPARENT]}
           style={styles.linearSpace}
           start={{ x: 0, y: 1 }}
           end={{ x: 0, y: 0 }} />

@@ -5,12 +5,11 @@ import {
   Map,
   Home,
   About,
+  Garden,
   Search,
   Review,
   QRCode,
-  Contact,
   Initial,
-  Category,
   PlantList,
   Information,
   SubCategory,
@@ -20,7 +19,6 @@ const routes = {
   Map,
   About,
   Review,
-  Contact,
   Initial,
   PlantList,
   Information,
@@ -40,7 +38,7 @@ export const routeChilds = {
     Home,
     Search,
     QRCode,
-    Category,
+    Garden,
   }
 }
 

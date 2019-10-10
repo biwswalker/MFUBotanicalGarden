@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   contentContainer: {
     flex: 1,
     marginVertical: scale(30, 'vertical'),
-    paddingHorizontal: scale(30),
+    paddingHorizontal: scale(15),
   },
   plantDetailContainer: {
     backgroundColor: Colors.WHITE,
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   image: {
     width: 90,
     height: 90,
-    resizeMode: 'contain',
+    resizeMode: 'cover',
     borderRadius: 10,
   },
   descriptionContainer: {
@@ -62,7 +62,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: scale(0),
   },
-
   reviewBoxContainer: {
     borderTopWidth: scale(1),
     borderTopColor: Colors.GRAY_EA,
