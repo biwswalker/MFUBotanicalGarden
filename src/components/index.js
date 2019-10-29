@@ -2,6 +2,7 @@ import { Modal, ModalController } from './Modal'
 import { IconButton } from './IconButton'
 import { CardItem } from './CardItem'
 import { Comment } from './Comment'
+import { Button } from './Button'
 import { Rating } from './Rating'
 import { Drawer } from './Drawer'
 import { Tabbar } from './Tabbar'
@@ -13,6 +14,7 @@ export {
   IconButton,
   CardItem,
   Comment,
+  Button,
   Rating,
   Drawer,
   Tabbar,
