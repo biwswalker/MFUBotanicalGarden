@@ -8,7 +8,6 @@ import { QRCode } from './QRCode'
 import { Review } from './Review'
 import { Search } from './Search'
 import { Initial } from './Initial'
-import { PlantList } from './PlantList'
 import { SubCategory } from './SubCategory'
 import { Information } from './Information'
 
@@ -23,7 +22,6 @@ export {
   Review,
   Search,
   Initial,
-  PlantList,
   SubCategory,
   Information,
 }

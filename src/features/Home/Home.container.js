@@ -1,54 +1,77 @@
 import React, { Component } from 'react'
-import { View, ScrollView } from 'react-native'
+import { View, Text, Dimensions } from 'react-native'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import Carousel from 'react-native-snap-carousel'
 
-// import { RouteType } from '../../constants'
 import { Card } from '@components'
 import { getNavigator } from '@configs/router'
+import { project } from '@constants'
+import { getHighlightList } from '@redux/highlight'
 import styles from './Home.styles'
 
-const CARD_IMAGE_1 = require('@images/cards/card-graden.jpg')
-const CARD_IMAGE_2 = require('@images/cards/card-flower.jpg')
-const CARD_IMAGE_3 = require('@images/cards/card-flowers.jpg')
-
+const { width: screenWidth } = Dimensions.get('window')
 class HomeContainer extends Component {
 
   static propsTypes = {
+    highlightList: PropTypes.array,
+    getHighlightList: PropTypes.func,
   }
 
   static defaultProps = {
     navigator() { },
+    highlightList: [],
+    getHighlightList() { },
   }
 
   constructor(props) {
     super(props)
   }
 
-  navigateScene = () => {
-    getNavigator().push('PlantList', {}, { animation: 'right', duration: 160, easing: 'ease-in-out' })
+  componentDidMount() {
+    this.props.getHighlightList()
+  }
+
+  navigateScene = (plant) => () => {
+    getNavigator().push('Information', { plantId: plant._id }, { animation: 'right', duration: 160, easing: 'ease-in-out' })
+  }
+
+  renderPlant = ({ item }, parallaxProps) => {
+    return (
+      <Card
+        plant={item}
+        key={item._id}
+        parallaxProps={parallaxProps}
+        onPress={this.navigateScene(item)}
+      />
+    )
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <ScrollView
-          horizontal
-          contentContainerStyle={styles.scroll}
-          showsHorizontalScrollIndicator={false} >
-          <Card
-            onPress={this.navigateScene}
-            image={CARD_IMAGE_1}
-            firstText='Highlight' />
-          <Card
-            image={CARD_IMAGE_2}
-            firstText='Spcies' />
-          <Card
-            image={CARD_IMAGE_3}
-            firstText='Leaves types' />
-        </ScrollView>
+        <View style={styles.headerWrapper}>
+          <Text style={styles.headerText}>Highlight</Text>
+        </View>
+        <Carousel
+          sliderWidth={screenWidth}
+          sliderHeight={screenWidth}
+          itemWidth={screenWidth - 100}
+          data={this.props.highlightList}
+          renderItem={this.renderPlant}
+          hasParallaxImages={true}
+        />
       </View>
     )
   }
 }
 
-export default HomeContainer
+const mapStateToProps = state => ({
+  highlightList: state[project.name].highlight.list
+})
+
+const mapDispatchToProps = {
+  getHighlightList
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer)
