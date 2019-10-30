@@ -10,7 +10,6 @@ import {
   Review,
   QRCode,
   Initial,
-  PlantList,
   Information,
   SubCategory,
 } from '@features'
@@ -20,7 +19,6 @@ const routes = {
   About,
   Review,
   Initial,
-  PlantList,
   Information,
   SubCategory,
 }

@@ -12,6 +12,7 @@ const colors = {
     WHITE_FA_TRANSPARENT: 'rgba(250, 250, 250, 0.5)',
     WHITE_FA_TRANSPARENTER: 'rgba(250, 250, 250, 0.1)',
     WHITE_FA: '#fafafa',
+    WHITE_FA: '#f7f7f7',
     GRAY_EA: '#eaecee',
     GRAY_D5: '#d5d8dc',
     GREEN_DARKNEST: '#243427',

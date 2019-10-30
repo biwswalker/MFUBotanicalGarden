@@ -3,51 +3,61 @@ import { Fonts, Colors } from '@constants'
 import { scale } from '@utils'
 
 const styles = {
-    container: {
-        overflow: 'hidden',
-        borderRadius: scale(20),
-        width: scale(270),
-        height: scale(400, 'vertical'),
-        marginVertical: scale(20, 'vertical'),
-        marginHorizontal: scale(20),
-        shadowColor: "#000",
-        shadowOffset: {
-            width: scale(0),
-            height: scale(12, 'vertical'),
-        },
-        shadowOpacity: 0.58,
-        shadowRadius: 16.00,
-        elevation: 24,
+  container: {
+    alignSelf: 'center',
+    backgroundColor: Colors.WHITE,
+    borderRadius: scale(20),
+    width: scale(300),
+    height: scale(460, 'vertical'),
+    marginVertical: scale(20, 'vertical'),
+
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 6,
     },
-    imageBackground: {
-        width: scale(300),
-        height: scale(400, 'vertical'),
-        padding: scale(20),
-    },
-    faded: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        backgroundColor: 'rgba(0,0,0,0.4)'
-    },
-    contentWrapper: {
-        flex: 1,
-        flexDirection: 'column'
-    },
-    labelWrapper: {
-        flex: 1,
-        justifyContent: 'flex-end',
-    },
-    labelText: {
-        fontFamily: Fonts.OpenSansCondensedBold,
-        color: Colors.WHITE,
-        fontSize: scale(40),
-    },
-    bottomWrapper: {
-        height: scale(0, 'vertical')
-    }
+    shadowOpacity: 0.39,
+    shadowRadius: 8.30,
+    elevation: 13,
+    paddingTop: scale(10, 'vertical'),
+    paddingHorizontal: scale(10),
+  },
+  imageContainer: {
+    borderRadius: scale(12),
+    width: scale(280),
+    height: scale(300, 'vertical'),
+    backgroundColor: Colors.GREEN_DARKFADE,
+    overflow: 'hidden'
+  },
+
+  gardenImageContainer: {
+    flex: 1,
+    width: scale(300),
+    height: scale(200, 'vertical'),
+  },
+  gardenImage: {
+    ...StyleSheet.absoluteFillObject,
+    resizeMode: 'cover',
+  },
+
+  titleWrapper: {
+    marginTop: scale(24, 'vertical'),
+    paddingHorizontal: scale(20),
+    overflow: 'hidden'
+  },
+  titleText: {
+    textAlign: 'left',
+    fontFamily: Fonts.QuarkBold,
+    color: Colors.BLACK_333,
+    fontSize: scale(32),
+  },
+  tags: {
+    paddingTop: scale(8, 'vertical'),
+    flexDirection: 'row',
+  },
+  buttonWrapper: {
+    paddingHorizontal: scale(70)
+  }
 }
 
 export default StyleSheet.create(styles)
