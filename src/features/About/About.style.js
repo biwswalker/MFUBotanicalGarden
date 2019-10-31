@@ -51,6 +51,15 @@ const styles = StyleSheet.create({
     color: Colors.GREEN_DARKNEST,
     textAlign: 'left'
   },
+  aboutusWrapper: {
+    paddingRight: scale(10),
+  },
+  aboutusText: {
+    fontFamily: Fonts.QuarkLight,
+    color: Colors.GREEN_DARKNEST,
+    textAlign: 'justify',
+    fontSize: scale(18),
+  }
 })
 
 export default styles
