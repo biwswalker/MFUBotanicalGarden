@@ -26,7 +26,7 @@ const styles = {
     borderRadius: scale(12),
     width: scale(280),
     height: scale(300, 'vertical'),
-    backgroundColor: Colors.GREEN_DARKFADE,
+    backgroundColor: Colors.GRAY_EA,
     overflow: 'hidden'
   },
 
