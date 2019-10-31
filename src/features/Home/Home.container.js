@@ -33,7 +33,7 @@ class HomeContainer extends Component {
   }
 
   navigateScene = (plant) => () => {
-    getNavigator().push('Information', { plantId: plant._id }, { animation: 'right', duration: 160, easing: 'ease-in-out' })
+    getNavigator().push('Information', { plantId: plant._id }, { animation: 'bottom' })
   }
 
   renderPlant = ({ item }, parallaxProps) => {

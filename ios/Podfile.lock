@@ -186,6 +186,14 @@ PODS:
   - React-jsinspector (0.61.2)
   - react-native-blur (0.8.0):
     - React
+  - react-native-camera (3.8.0):
+    - React
+    - react-native-camera/RCT (= 3.8.0)
+    - react-native-camera/RN (= 3.8.0)
+  - react-native-camera/RCT (3.8.0):
+    - React
+  - react-native-camera/RN (3.8.0):
+    - React
   - react-native-maps (0.25.0):
     - React
   - react-native-safe-area-context (0.5.0):
@@ -248,6 +256,7 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - "react-native-blur (from `../node_modules/@react-native-community/blur`)"
+  - react-native-camera (from `../node_modules/react-native-camera`)
   - react-native-maps (from `../node_modules/react-native-maps`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
@@ -301,6 +310,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   react-native-blur:
     :path: "../node_modules/@react-native-community/blur"
+  react-native-camera:
+    :path: "../node_modules/react-native-camera"
   react-native-maps:
     :path: "../node_modules/react-native-maps"
   react-native-safe-area-context:
@@ -348,6 +359,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 8909917ff7d8f21a57e443a866fd8d4560e50c65
   React-jsinspector: 111d7d342b07a904c400592e02a2b958f1098b60
   react-native-blur: cad4d93b364f91e7b7931b3fa935455487e5c33c
+  react-native-camera: 3e52a28e4f437b566302e574bed0f77eeab3f737
   react-native-maps: 190c02ca533fddac5bb49cf17bdece3644612107
   react-native-safe-area-context: 329e0a80f124c687e00773fee417a3903788840a
   React-RCTActionSheet: 89b037c0fb7d2671607cb645760164e7e0c013f6
