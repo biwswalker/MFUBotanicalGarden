@@ -1,4 +1,5 @@
 import React, { Component, createRef } from 'react'
+import { includes, split } from 'lodash'
 import { View } from 'react-native'
 import { RNCamera } from 'react-native-camera'
 import { getNavigator } from '@configs/router'
@@ -15,8 +16,10 @@ class QRCode extends Component {
   }
 
   onBarCodeRead = ({ barcodes }) => {
-    if (barcodes) {
-      getNavigator().push('Information', { plantId: barcodes }, { animation: 'bottom' })
+    // Accept only MFUBG-${_id}
+    if (barcodes && includes(barcodes, 'MFUBG')) {
+      const plantId = get(split(barcodes, 'MFUBG-', 2), '1', '');
+      getNavigator().push('Information', { plantId }, { animation: 'bottom' })
     }
   }
 
