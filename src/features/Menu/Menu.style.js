@@ -15,14 +15,14 @@ const styles = StyleSheet.create({
   mfuText: {
     fontFamily: fonts.OpenSansCondensedBold,
     fontSize: scale(48),
-    lineHeight: scale(52, 'vertical'),
+    lineHeight: scale(54, 'vertical'),
     color: Colors.GREEN_DARKFADE,
     textAlign: 'left'
   },
   botanicalText: {
     fontFamily: fonts.OpenSansCondensedLight,
     fontSize: scale(26),
-    lineHeight: scale(26, 'vertical'),
+    lineHeight: scale(32, 'vertical'),
     color: Colors.GREEN_DARKNEST,
     textAlign: 'left'
   },

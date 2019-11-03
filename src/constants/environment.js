@@ -1,7 +1,7 @@
 const env = __DEV__ ? 'dev' : 'production'
 const api = {
-  dev: 'localhost:4000/api',
-  production: '/api'
+  dev: '127.0.0.1:4000/api',
+  production: 'mfubg-bmo.herokuapp.com/api'
 }
 
 export const apiEndpoint = api[env]

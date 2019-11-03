@@ -20,7 +20,7 @@ const styles = {
   },
   headerText: {
     fontFamily: Fonts.OpenSansCondensedBold,
-    lineHeight: scale(36, 'vertical'),
+    lineHeight: scale(38, 'vertical'),
     fontSize: scale(32),
     color: Colors.BLACK,
   }

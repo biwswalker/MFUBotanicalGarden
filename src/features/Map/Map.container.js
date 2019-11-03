@@ -1,4 +1,4 @@
-import React, { Component, createRef, Fragment } from 'react'
+import React, { Component, createRef } from 'react'
 import {
   View,
   Text,
@@ -6,6 +6,7 @@ import {
   Linking,
   Platform,
   Animated,
+  findNodeHandle,
   TouchableHighlight,
 } from 'react-native'
 import _ from 'lodash'
@@ -47,6 +48,7 @@ class Map extends Component {
   constructor(props) {
     super(props)
     this.mapRef = createRef()
+    this.blurRef = null
     this.state = {
       currentRegion: initialRegion,
       selectedGarden: {},
@@ -57,6 +59,7 @@ class Map extends Component {
 
   componentDidMount() {
     this.props.getGardenList()
+    this.blurRef = findNodeHandle(this.mapRef.current)
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -187,7 +190,7 @@ class Map extends Component {
           styles.descriptionContainer,
           { transform: [{ translateY }] }]}>
           <BlurView
-            viewRef={this.mapRef}
+            viewRef={this.blurRef}
             style={styles.blurComponent}
             blurType='light'
             blurAmount={20} />
