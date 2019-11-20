@@ -25,14 +25,14 @@ const styles = {
   mfuText: {
     fontFamily: Fonts.OpenSansCondensedBold,
     fontSize: scale(20),
-    lineHeight: scale(24, 'vertical'),
+    lineHeight: scale(26, 'vertical'),
     color: Colors.BLACK,
     textAlign: 'right'
   },
   bgText: {
     fontFamily: Fonts.OpenSansCondensedLight,
     fontSize: scale(18),
-    lineHeight: scale(22, 'vertical'),
+    lineHeight: scale(24, 'vertical'),
     color: Colors.BLACK,
     textAlign: 'right'
   },
@@ -52,7 +52,7 @@ const styles = {
   searchText: {
     fontFamily: Fonts.OpenSansCondensedBold,
     fontSize: scale(32),
-    lineHeight: scale(36, 'vertical'),
+    lineHeight: scale(40, 'vertical'),
     color: Colors.BLACK,
     textAlign: 'right',
     marginBottom: scale(10),

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import { AppRegistry } from 'react-native'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
 import {
   storeConfig,
   serviceConfig,
@@ -14,7 +15,9 @@ serviceConfig(projectConfig, store)
 
 const App = () => (
   <Provider store={store}>
-    <Router />
+    <SafeAreaProvider>
+      <Router />
+    </SafeAreaProvider>
   </Provider>
 )
 

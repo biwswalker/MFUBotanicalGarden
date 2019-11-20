@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Platform } from 'react-native'
 import { scale } from '@utils'
 import { Colors, Fonts } from '@constants'
 
@@ -21,7 +21,8 @@ const styles = {
     tintColor: Colors.BLACK_TRANSPARENT_LIGHTER,
   },
   searchField: {
-    fontSize: scale(18),
+    fontSize: Platform.OS === 'android' ? scale(14) : scale(18),
+    lineHeight: scale(26),
     fontFamily: Fonts.QuarkLight,
     flex: 1,
     paddingHorizontal: scale(10)
@@ -68,7 +69,7 @@ const styles = {
   emptyText: {
     fontFamily: Fonts.QuarkLight,
     fontSize: scale(24),
-    lineHeight: scale(28, 'vertical'),
+    lineHeight: scale(30, 'vertical'),
     color: Colors.BLACK_666,
   }
 }

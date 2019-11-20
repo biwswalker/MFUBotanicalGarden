@@ -4,7 +4,7 @@ import { CardItem } from '@components'
 import { getNavigator } from '@configs/router'
 import { useDispatch, useSelector } from 'react-redux'
 import _ from 'lodash'
-import { getGardenList, clearGarden } from '@redux/garden'
+import { getGardenList } from '@redux/garden'
 import { project } from '@constants'
 
 import styles from './Garden.style'
@@ -22,7 +22,6 @@ const Garden = () => {
 
   useEffect(() => {
     dispatch(getGardenList())
-    return () => dispatch(clearGarden())
   }, [])
 
   const icons = [

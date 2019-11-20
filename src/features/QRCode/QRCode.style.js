@@ -7,7 +7,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.BLACK,
   },
-  bottomBar: {
+  cameraContainer: {
+    flex: 1,
+  },
+  camera: {
+    flex: 1,
+  },
+  absoluteFrame: {
     position: 'absolute',
     top: 0,
     left: 0,

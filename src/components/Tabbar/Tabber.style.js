@@ -29,7 +29,7 @@ const styles = {
   },
   tabText: {
     fontFamily: Fonts.OpenSansCondensedBold,
-    lineHeight: scale(14, 'vertical'),
+    lineHeight: scale(20, 'vertical'),
     color: Colors.BLACK_333,
     fontSize: scale(14),
   }

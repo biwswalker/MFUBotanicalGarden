@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "186164840561",
+    "firebase_url": "https://mfu-bg.firebaseio.com",
+    "project_id": "mfu-bg",
+    "storage_bucket": "mfu-bg.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:186164840561:android:924a2e6349dd84748ff3d0",
+        "android_client_info": {
+          "package_name": "com.mfubotanicalgarden"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "186164840561-9fg3lv0pee12d8qbag5c81d1qh3bfj8v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbn7jfXU3PnEJl2A4Ai-KkNQULVydPmOA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "186164840561-9fg3lv0pee12d8qbag5c81d1qh3bfj8v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

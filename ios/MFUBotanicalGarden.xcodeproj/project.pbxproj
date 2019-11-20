@@ -5,8 +5,10 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* MFUBotanicalGardenTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* MFUBotanicalGardenTests.m */; };
+		09098FD730F24AEDA95E86FC /* Kanit-RegularItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9047230CEC2D45E7B66EC3C3 /* Kanit-RegularItalic.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -21,19 +23,18 @@
 		325E488074D7C9942F6AE2DE /* libPods-MFUBotanicalGarden-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B85764B66157BFE3602EB0CB /* libPods-MFUBotanicalGarden-tvOS.a */; };
 		4AD8AA21EDD644B3BCE35432 /* OpenSansCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB4B5592433F448AB3E6C6CC /* OpenSansCondensed-Bold.ttf */; };
 		4C40339E113243F5AFFD8566 /* OpenSansCondensed-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0F3DBEA50B2462BB80C98F2 /* OpenSansCondensed-LightItalic.ttf */; };
-		8E620E54A7794E00AB8EC6AC /* OpenSansCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 44E840C468DA4F0BABEB00FC /* OpenSansCondensed-Light.ttf */; };
 		5AF597ACC8FA468499AAFB7B /* Quark-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D361B1CE6B84085A3D7D275 /* Quark-Bold.otf */; };
-		84F2E3803D174DE9B94E9169 /* Quark-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8588C0A1B21A4807985F2A7E /* Quark-Light.otf */; };
-		FE5180AA90FF47CFA71CAD78 /* Kanit-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C35F0660DBBC49A9ACB5D2FF /* Kanit-Black.ttf */; };
 		6000CDB703B542B9A4B35C7D /* Kanit-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85561702F7494D5789CAF782 /* Kanit-Bold.ttf */; };
-		7829971712B24CE9A71E4B7E /* Kanit-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC18FCF3584B49FF863A6A91 /* Kanit-ExtraBold.ttf */; };
-		B2D170745C6E476A8C158219 /* Kanit-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 145BAEA5621749E5BBC49726 /* Kanit-ExtraLight.ttf */; };
-		96E64C49D57642D38BA9BA3E /* Kanit-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A350924981964D7183BFEF9F /* Kanit-Light.ttf */; };
 		6D4414BC07E946C8B48E4D28 /* Kanit-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE991A617E704A8BA640AB47 /* Kanit-Medium.ttf */; };
-		F2AEF81D595D4A469F3759A2 /* Kanit-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04F553B37C4A432C91638667 /* Kanit-Regular.ttf */; };
-		09098FD730F24AEDA95E86FC /* Kanit-RegularItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9047230CEC2D45E7B66EC3C3 /* Kanit-RegularItalic.ttf */; };
+		7829971712B24CE9A71E4B7E /* Kanit-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC18FCF3584B49FF863A6A91 /* Kanit-ExtraBold.ttf */; };
+		84F2E3803D174DE9B94E9169 /* Quark-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8588C0A1B21A4807985F2A7E /* Quark-Light.otf */; };
 		852BB5ACDB7B446191F11EF2 /* Kanit-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E4AB42EE8F2542D4962F44B1 /* Kanit-SemiBold.ttf */; };
+		8E620E54A7794E00AB8EC6AC /* OpenSansCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 44E840C468DA4F0BABEB00FC /* OpenSansCondensed-Light.ttf */; };
+		96E64C49D57642D38BA9BA3E /* Kanit-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A350924981964D7183BFEF9F /* Kanit-Light.ttf */; };
 		A562E5A3C34C4D439424B256 /* Kanit-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8A44EB3F41D24DC89BE38968 /* Kanit-Thin.ttf */; };
+		B2D170745C6E476A8C158219 /* Kanit-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 145BAEA5621749E5BBC49726 /* Kanit-ExtraLight.ttf */; };
+		F2AEF81D595D4A469F3759A2 /* Kanit-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04F553B37C4A432C91638667 /* Kanit-Regular.ttf */; };
+		FE5180AA90FF47CFA71CAD78 /* Kanit-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C35F0660DBBC49A9ACB5D2FF /* Kanit-Black.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		00E356EE1AD99517003FC87E /* MFUBotanicalGardenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MFUBotanicalGardenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* MFUBotanicalGardenTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MFUBotanicalGardenTests.m; sourceTree = "<group>"; };
+		04F553B37C4A432C91638667 /* Kanit-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Kanit-Regular.ttf"; path = "../src/assets/fonts/Kanit/Kanit-Regular.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* MFUBotanicalGarden.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MFUBotanicalGarden.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = MFUBotanicalGarden/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = MFUBotanicalGarden/AppDelegate.m; sourceTree = "<group>"; };
@@ -66,36 +68,35 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = MFUBotanicalGarden/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = MFUBotanicalGarden/main.m; sourceTree = "<group>"; };
 		144197AD493708D3C3C4D238 /* Pods-MFUBotanicalGarden-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MFUBotanicalGarden-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-MFUBotanicalGarden-tvOS/Pods-MFUBotanicalGarden-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		145BAEA5621749E5BBC49726 /* Kanit-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Kanit-ExtraLight.ttf"; path = "../src/assets/fonts/Kanit/Kanit-ExtraLight.ttf"; sourceTree = "<group>"; };
 		1CD3535DBD6C3FDEB791885B /* Pods-MFUBotanicalGardenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MFUBotanicalGardenTests.release.xcconfig"; path = "Target Support Files/Pods-MFUBotanicalGardenTests/Pods-MFUBotanicalGardenTests.release.xcconfig"; sourceTree = "<group>"; };
 		25003CF805BF0012AF977674 /* Pods-MFUBotanicalGarden-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MFUBotanicalGarden-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-MFUBotanicalGarden-tvOSTests/Pods-MFUBotanicalGarden-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* MFUBotanicalGarden-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MFUBotanicalGarden-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* MFUBotanicalGarden-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MFUBotanicalGarden-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		44E840C468DA4F0BABEB00FC /* OpenSansCondensed-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSansCondensed-Light.ttf"; path = "../src/assets/fonts/OpenSansCondensed/OpenSansCondensed-Light.ttf"; sourceTree = "<group>"; };
+		44E840C468DA4F0BABEB00FC /* OpenSansCondensed-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSansCondensed-Light.ttf"; path = "../src/assets/fonts/OpenSansCondensed/OpenSansCondensed-Light.ttf"; sourceTree = "<group>"; };
 		51DC7696DA456DB4DA9C175E /* Pods-MFUBotanicalGarden.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MFUBotanicalGarden.debug.xcconfig"; path = "Target Support Files/Pods-MFUBotanicalGarden/Pods-MFUBotanicalGarden.debug.xcconfig"; sourceTree = "<group>"; };
+		6D361B1CE6B84085A3D7D275 /* Quark-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Quark-Bold.otf"; path = "../src/assets/fonts/Quark/Quark-Bold.otf"; sourceTree = "<group>"; };
 		7B56FEDE808428AF7A04FCAC /* Pods-MFUBotanicalGarden.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MFUBotanicalGarden.release.xcconfig"; path = "Target Support Files/Pods-MFUBotanicalGarden/Pods-MFUBotanicalGarden.release.xcconfig"; sourceTree = "<group>"; };
 		7C01D20C09A168931761E342 /* Pods-MFUBotanicalGarden-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MFUBotanicalGarden-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-MFUBotanicalGarden-tvOSTests/Pods-MFUBotanicalGarden-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		85561702F7494D5789CAF782 /* Kanit-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Kanit-Bold.ttf"; path = "../src/assets/fonts/Kanit/Kanit-Bold.ttf"; sourceTree = "<group>"; };
+		8588C0A1B21A4807985F2A7E /* Quark-Light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Quark-Light.otf"; path = "../src/assets/fonts/Quark/Quark-Light.otf"; sourceTree = "<group>"; };
+		8A44EB3F41D24DC89BE38968 /* Kanit-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Kanit-Thin.ttf"; path = "../src/assets/fonts/Kanit/Kanit-Thin.ttf"; sourceTree = "<group>"; };
 		8CCCC95D5E7EF763D4C704C6 /* Pods-MFUBotanicalGardenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MFUBotanicalGardenTests.debug.xcconfig"; path = "Target Support Files/Pods-MFUBotanicalGardenTests/Pods-MFUBotanicalGardenTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9047230CEC2D45E7B66EC3C3 /* Kanit-RegularItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Kanit-RegularItalic.ttf"; path = "../src/assets/fonts/Kanit/Kanit-RegularItalic.ttf"; sourceTree = "<group>"; };
 		91E6CD762A498D3FA9875D2C /* libPods-MFUBotanicalGardenTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MFUBotanicalGardenTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95CAB1774DE34BD392B729E0 /* libPods-MFUBotanicalGarden-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MFUBotanicalGarden-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A350924981964D7183BFEF9F /* Kanit-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Kanit-Light.ttf"; path = "../src/assets/fonts/Kanit/Kanit-Light.ttf"; sourceTree = "<group>"; };
 		B85764B66157BFE3602EB0CB /* libPods-MFUBotanicalGarden-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MFUBotanicalGarden-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CB4B5592433F448AB3E6C6CC /* OpenSansCondensed-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSansCondensed-Bold.ttf"; path = "../src/assets/fonts/OpenSansCondensed/OpenSansCondensed-Bold.ttf"; sourceTree = "<group>"; };
-		E0F3DBEA50B2462BB80C98F2 /* OpenSansCondensed-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSansCondensed-LightItalic.ttf"; path = "../src/assets/fonts/OpenSansCondensed/OpenSansCondensed-LightItalic.ttf"; sourceTree = "<group>"; };
+		C35F0660DBBC49A9ACB5D2FF /* Kanit-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Kanit-Black.ttf"; path = "../src/assets/fonts/Kanit/Kanit-Black.ttf"; sourceTree = "<group>"; };
+		CB4B5592433F448AB3E6C6CC /* OpenSansCondensed-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSansCondensed-Bold.ttf"; path = "../src/assets/fonts/OpenSansCondensed/OpenSansCondensed-Bold.ttf"; sourceTree = "<group>"; };
+		CE991A617E704A8BA640AB47 /* Kanit-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Kanit-Medium.ttf"; path = "../src/assets/fonts/Kanit/Kanit-Medium.ttf"; sourceTree = "<group>"; };
+		E0F3DBEA50B2462BB80C98F2 /* OpenSansCondensed-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSansCondensed-LightItalic.ttf"; path = "../src/assets/fonts/OpenSansCondensed/OpenSansCondensed-LightItalic.ttf"; sourceTree = "<group>"; };
+		E4AB42EE8F2542D4962F44B1 /* Kanit-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Kanit-SemiBold.ttf"; path = "../src/assets/fonts/Kanit/Kanit-SemiBold.ttf"; sourceTree = "<group>"; };
+		EC18FCF3584B49FF863A6A91 /* Kanit-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Kanit-ExtraBold.ttf"; path = "../src/assets/fonts/Kanit/Kanit-ExtraBold.ttf"; sourceTree = "<group>"; };
 		EC1E539AAA84DA866FFF1CC9 /* Pods-MFUBotanicalGarden-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MFUBotanicalGarden-tvOS.release.xcconfig"; path = "Target Support Files/Pods-MFUBotanicalGarden-tvOS/Pods-MFUBotanicalGarden-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F205657412C5B186D6F275DD /* libPods-MFUBotanicalGarden.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MFUBotanicalGarden.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6D361B1CE6B84085A3D7D275 /* Quark-Bold.otf */ = {isa = PBXFileReference; name = "Quark-Bold.otf"; path = "../src/assets/fonts/Quark/Quark-Bold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		8588C0A1B21A4807985F2A7E /* Quark-Light.otf */ = {isa = PBXFileReference; name = "Quark-Light.otf"; path = "../src/assets/fonts/Quark/Quark-Light.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		C35F0660DBBC49A9ACB5D2FF /* Kanit-Black.ttf */ = {isa = PBXFileReference; name = "Kanit-Black.ttf"; path = "../src/assets/fonts/Kanit/Kanit-Black.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		85561702F7494D5789CAF782 /* Kanit-Bold.ttf */ = {isa = PBXFileReference; name = "Kanit-Bold.ttf"; path = "../src/assets/fonts/Kanit/Kanit-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		EC18FCF3584B49FF863A6A91 /* Kanit-ExtraBold.ttf */ = {isa = PBXFileReference; name = "Kanit-ExtraBold.ttf"; path = "../src/assets/fonts/Kanit/Kanit-ExtraBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		145BAEA5621749E5BBC49726 /* Kanit-ExtraLight.ttf */ = {isa = PBXFileReference; name = "Kanit-ExtraLight.ttf"; path = "../src/assets/fonts/Kanit/Kanit-ExtraLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		A350924981964D7183BFEF9F /* Kanit-Light.ttf */ = {isa = PBXFileReference; name = "Kanit-Light.ttf"; path = "../src/assets/fonts/Kanit/Kanit-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		CE991A617E704A8BA640AB47 /* Kanit-Medium.ttf */ = {isa = PBXFileReference; name = "Kanit-Medium.ttf"; path = "../src/assets/fonts/Kanit/Kanit-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		04F553B37C4A432C91638667 /* Kanit-Regular.ttf */ = {isa = PBXFileReference; name = "Kanit-Regular.ttf"; path = "../src/assets/fonts/Kanit/Kanit-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		9047230CEC2D45E7B66EC3C3 /* Kanit-RegularItalic.ttf */ = {isa = PBXFileReference; name = "Kanit-RegularItalic.ttf"; path = "../src/assets/fonts/Kanit/Kanit-RegularItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		E4AB42EE8F2542D4962F44B1 /* Kanit-SemiBold.ttf */ = {isa = PBXFileReference; name = "Kanit-SemiBold.ttf"; path = "../src/assets/fonts/Kanit/Kanit-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		8A44EB3F41D24DC89BE38968 /* Kanit-Thin.ttf */ = {isa = PBXFileReference; name = "Kanit-Thin.ttf"; path = "../src/assets/fonts/Kanit/Kanit-Thin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,7 +199,6 @@
 				8A44EB3F41D24DC89BE38968 /* Kanit-Thin.ttf */,
 			);
 			name = Resources;
-			path = "";
 			sourceTree = "<group>";
 		};
 		72AD7E0C135581419C25EFCE /* Pods */ = {
@@ -213,7 +213,6 @@
 				8CCCC95D5E7EF763D4C704C6 /* Pods-MFUBotanicalGardenTests.debug.xcconfig */,
 				1CD3535DBD6C3FDEB791885B /* Pods-MFUBotanicalGardenTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -361,6 +360,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -439,7 +439,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		07B9FDE2653897BC6985B209 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

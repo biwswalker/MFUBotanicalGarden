@@ -4,10 +4,9 @@ import _ from 'lodash'
 const requestInterceptor = (config) => {
   const configMod = {
     ...config,
-    headers: {
-      ...config.headers,
-    },
-    
+    // headers: {
+    //   ...config.headers,
+    // },    
     // Replace double slash or more in url to left one slash
     // e.g. url/path//id:1234 to url/path/id:1234
     url: config.url.replace(/([^:])(\/\/)/g, '$1/'),

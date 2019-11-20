@@ -3,6 +3,7 @@ import {
   Text,
   View,
   Animated,
+  KeyboardAvoidingView,
 } from 'react-native'
 import _ from 'lodash'
 import Navigator from 'react-native-easy-router'
@@ -112,27 +113,27 @@ class Initial extends Component {
       <SafeAreaView
         forceInset={{ vertical: 'always' }}
         style={styles.container}>
-        <View style={styles.headerWarpper}>
-          <View style={styles.leftHeaderWarpper}>
-            <IconButton
-              icon={MENU_ICON}
-              iconSize={32}
-              tintColor={Colors.BLACK}
-              onPress={this.onPressOpenDrawer} />
+          <View style={styles.headerWarpper}>
+            <View style={styles.leftHeaderWarpper}>
+              <IconButton
+                icon={MENU_ICON}
+                iconSize={32}
+                tintColor={Colors.BLACK}
+                onPress={this.onPressOpenDrawer} />
+            </View>
+            <Animated.View style={[styles.rightHeaderWarpper, { opacity: opacityTitle, transform: [{ translateX: translateXTitle }] }]}>
+              <TitleName />
+            </Animated.View>
           </View>
-          <Animated.View style={[styles.rightHeaderWarpper, { opacity: opacityTitle, transform: [{ translateX: translateXTitle }] }]}>
-            <TitleName />
-          </Animated.View>
-        </View>
-        <View style={styles.contentWrapper}>
-          <Navigator
-            screens={routeChilds.Initial}
-            initialStack='Home'
-            navigatorRef={router => (this.router = router)} />
-        </View>
-        <View style={styles.footerTabbar}>
-          <Tabbar activeScene={activeScene} tabs={tabs} callbackOnPress={this.onPressTab} />
-        </View>
+          <View style={styles.contentWrapper}>
+            <Navigator
+              screens={routeChilds.Initial}
+              initialStack='Home'
+              navigatorRef={router => (this.router = router)} />
+          </View>
+          <View style={styles.footerTabbar}>
+            <Tabbar activeScene={activeScene} tabs={tabs} callbackOnPress={this.onPressTab} />
+          </View>
       </SafeAreaView>
     )
   }
