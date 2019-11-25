@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import { StatusBar } from 'react-native'
 import Navigator from 'react-native-easy-router'
 import { Modal } from '@components'
 import {
@@ -54,6 +55,7 @@ class Router extends Component {
   render() {
     return (
       <Fragment>
+        <StatusBar barStyle='dark-content' />
         <Navigator
           screens={routes}
           initialStack='Initial'
