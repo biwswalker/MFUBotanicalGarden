@@ -55,6 +55,7 @@ class Information extends Component {
       PropTypes.object,
       PropTypes.func,
     ]),
+    onPresBackCallback: PropTypes.func,
     clearupData: PropTypes.func,
     getPlant: PropTypes.func,
     plant: PropTypes.object,
@@ -62,6 +63,7 @@ class Information extends Component {
   }
 
   static defaultProps = {
+    onPresBackCallback() { },
     clearupData() { },
     navigator() { },
     getPlant() { },
@@ -143,6 +145,7 @@ class Information extends Component {
    */
 
   onPressClose = () => {
+    this.props.onPresBackCallback()
     this.props.navigator.pop()
   }
 

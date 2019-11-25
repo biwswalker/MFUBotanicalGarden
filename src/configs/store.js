@@ -9,7 +9,9 @@ import reactotronConfig from './reactotron'
 
 const enhancer = [axiosMiddleware, thunk.withExtraArgument(axios)]
 
-const composedEnhancer = composeWithDevTools(applyMiddleware(...enhancer), reactotronConfig().createEnhancer())
+const composedEnhancer = __DEV__
+  ? composeWithDevTools(applyMiddleware(...enhancer), reactotronConfig().createEnhancer())
+  : composeWithDevTools(applyMiddleware(...enhancer))
 
 const initialStoreByName = storeName => {
   const store = createStore(reducers(storeName), {}, composedEnhancer)
